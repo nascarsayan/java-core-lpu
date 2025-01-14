@@ -6,5 +6,6 @@ public class Main {
         // print the value of the variable
         System.out.println(y);
         System.out.println("Hello, Mars!");
+        // This is new line 1
     }
 }
