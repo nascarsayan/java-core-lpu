@@ -8,5 +8,6 @@ public class Main {
         System.out.println("Hello, Mars!");
         // This is new line 1
         // This is new line 2
+        // This is line 3
     }
 }
