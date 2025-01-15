@@ -186,6 +186,11 @@ sc.nextLong(); // read a long
 sc.nextFloat(); // read a float
 sc.nextDouble(); // read a double
 sc.nextBoolean(); // read a boolean
+
+// read a character from console
+// There is no method to read a character from console
+// use next() and get the first character from it.
+sc.next().charAt(0);
 ```
 
 ---
@@ -207,6 +212,106 @@ public class HelloWorld {
         System.out.printf("Number is : ++%d++ String is ++%s++\n", n, s);
         // close the scanner
         sc.close();
+    }
+}
+```
+
+---
+
+# Arrays
+
+```java
+import java.util.Scanner;
+
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.print("Please enter size of arr: ");
+        var sc = new Scanner(System.in);
+        var k = sc.nextInt();
+
+        var arr = new int[k];
+        for (var i = 1; i <= k ; i++) {
+            arr[i-1] = i;
+        }
+        // prints the length of the array
+        System.out.println(arr.length);
+        // prints the address of the array
+        System.out.println(arr.toString());
+        // prints the array
+        for (var i : arr) {
+            System.out.print(i + " ");
+        }
+        // close the scanner
+        sc.close();
+    }
+}
+```
+
+----
+
+# Wrapper classes
+
+- Java has primitive data types like `int`, `float`, `double`, etc.
+- There are corresponding wrapper classes for each of these, such as `Integer`, `Float`, `Double`, etc.
+- These classes provide additional functionality and methods that can be used with the primitive data types.
+- For example, you can use the `Integer` class to create an object from a primitive integer value.
+
+---
+
+# Wrapper classes
+
+```java
+// Convert an int to an Integer
+int i = 10;
+Integer integer = Integer.valueOf(i);
+// Convert an int to a String
+String str = Integer.toString(i);
+```
+
+In C, we have `itoa` and `atoi`.
+
+`itoa` is a function in C that converts an integer to a string.
+`atoi` is a function in C that converts a string to an integer.
+
+---
+
+# Fibonacci series
+
+```java
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class Sample {
+
+    static void fiboIterative(int count) {
+        int f1 = 0, f2 = 1;
+        for (int i = 0; i < count - 1; i++) {
+            int temp = f1 + f2;
+            f1 = f2;
+            f2 = temp;
+            System.out.println(f2);
+        }
+    }
+
+    static int fiboRecursive(int count) {
+        if (count == 0) return 0;
+        if (count == 1) return 1;
+        return fiboRecursive(count-1) + fiboRecursive(count-2);
+    }
+
+    static int fiboDP(int count) {
+        if (count == 0) return 0;
+        if (count == 1) return 1;
+        // TODO: save and memoize the values of previously computed fiboDP
+        var k = fiboDP(count-1) + fiboDP(count-2);
+
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        fiboIterative(n);
+        System.out.println("recursive is: " + fiboRecursive(n));
     }
 }
 ```
