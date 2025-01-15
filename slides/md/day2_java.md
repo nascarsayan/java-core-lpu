@@ -441,6 +441,7 @@ You are given a map of a building, and your task is to count the number of its r
 
 # Please check github for code
 
+https://github.com/nascarsayan/java-core-lpu/blob/main/slides/md/day2_java.md#please-check-github-for-code
 
 ```java
 import java.util.*;
