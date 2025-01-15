@@ -143,3 +143,70 @@ public class HelloWorld {
 
 ---
 
+## Packages
+
+- External Package names are in this format: `com.companyname.packagename`
+ This is opposite the website Domain name convention.
+
+ For example, if your website is `oci.oracle.com`, then your package name would be `com.oracle.oci`.
+
+- Internal Package names are in this format: `java.<package>`.
+  For example, `java.util`, `java.lang`, `java.util.concurrent.atomic`.
+
+You can think of packages as folders on a file system.
+
+---
+
+# Importing packages
+
+```java
+// use scanner to read input from the console
+import java.util.Scanner;
+
+public class HelloWorld {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        // read a string from the console
+        String s = sc.nextLine();
+        System.out.printf("You entered: %s\n", s);
+        // close the scanner
+        sc.close();
+    }
+}
+```
+
+---
+
+# Methods to read diff data types
+
+```java
+sc.next(); // read a string
+sc.nextInt(); // read an integer
+sc.nextLong(); // read a long
+sc.nextFloat(); // read a float
+sc.nextDouble(); // read a double
+sc.nextBoolean(); // read a boolean
+```
+
+---
+
+# Trailing newlines
+
+```java
+import java.util.Scanner;
+
+public class HelloWorld {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        // read a int from console
+        int n = sc.nextInt();
+        // **flush the extra newline at the end of the int**
+        sc.nextLine();
+        // read the next line
+        String s = sc.nextLine();
+        System.out.printf("Number is : ++%d++ String is ++%s++\n", n, s);
+        // close the scanner
+        sc.close();
+    }
+}
+```
