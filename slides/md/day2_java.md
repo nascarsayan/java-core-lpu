@@ -274,6 +274,8 @@ In C, we have `itoa` and `atoi`.
 `atoi` is a function in C that converts a string to an integer.
 
 ---
+zoom: 0.7
+---
 
 # Fibonacci series
 
@@ -326,6 +328,103 @@ public class Sample {
 //        System.out.println("recursive is: " + fiboRecursive(n));
 //        System.out.println("dp is: " + fiboDP(n));
         validateMapMaxSize();
+    }
+}
+```
+
+---
+zoom: 0.9
+---
+
+# Seive of Eratosthenes
+
+```java
+public class Sample {
+
+    public static void main(String[] args) {
+        // Upper limit for the primes we want to check for.
+        int maxVal = 30;
+
+        // We are running of Seive of Erathnosis to cut out non-primes.
+        boolean[] isPrime = new boolean[maxVal+1];
+
+        // Set all numbers by default as prime.
+        for (int num = 2; num <= maxVal; num++) {
+            isPrime[num] = true;
+        }
+
+        for (int num = 2; num <= maxVal; num++) {
+            if (!isPrime[num]) continue;
+            for (int multiple = num*2;
+                 multiple <= maxVal; multiple += num) {
+                isPrime[multiple] = false;
+            }
+        }
+
+        // Printing primes
+        for (int num = 2; num <= maxVal; num++) {
+            if (isPrime[num]) System.out.println(num);
+        }
+    }
+}
+```
+
+---
+
+# Data Structure time complexity Parameters
+
+- **Insertion at the ends**
+- **Insertion at any position**
+- **Deletion at the ends**
+- **Deletion at any position**
+- **Search / Cheeck for existence**
+- **Order between elements**
+- **Find by order**
+- **Get order of an element**
+
+---
+
+# ArrayLists in Java
+
+- ArrayLists are a part of the Java Collections Framework (`java.util` package).
+- Differences from arrays **Dynamic size** (can grow or shrink)
+
+---
+zoom: 0.8
+---
+
+# Using ArrayList instead of arrays
+
+```java
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class Sample {
+
+    public static void main(String[] args) {
+        // Upper limit for the primes we want to check for.
+        int maxVal = 30;
+
+        // create a static sized (31) length arraylist of boolean with default value of true.
+        // We dont need to initialize the values if we use arraylist.
+        var isPrime = new ArrayList<Boolean>(Collections.nCopies(maxVal+1, true));
+
+        // c++ equivalent.
+        // auto x = vector<bool>(maxVal+1, true);
+
+        for (int num = 2; num <= maxVal; num++) {
+            if (!isPrime.get(num)) continue;
+            for (int multiple = num*2;
+                 multiple <= maxVal; multiple += num) {
+                isPrime.set(multiple, false);
+            }
+        }
+
+        // Printing primes
+        for (int num = 2; num <= maxVal; num++) {
+            if (isPrime.get(num)) System.out.println(num);
+        }
+
     }
 }
 ```
