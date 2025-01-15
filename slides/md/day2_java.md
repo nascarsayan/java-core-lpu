@@ -222,6 +222,7 @@ public class HelloWorld {
 
 ```java
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class HelloWorld {
     public static void main(String[] args) {
@@ -237,7 +238,9 @@ public class HelloWorld {
         System.out.println(arr.length);
         // prints the address of the array
         System.out.println(arr.toString());
-        // prints the array
+        // print the whole array in a single line of code
+        System.out.println(Arrays.toString(arr));
+        // prints the array using a loop
         for (var i : arr) {
             System.out.print(i + " ");
         }
