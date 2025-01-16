@@ -83,3 +83,124 @@ Java is neither completely compiled nor interpreted. It's a mix of both.
 
 ---
 
+## Paradigms
+
+- Functional programming.
+  Example: Haskell, Lisp, Clojure, Scala
+- Procedural programming.
+  + C, C++, Java, Python, Ruby, PHP, JavaScript, Go, Rust, etc.
+- Structured Queries (SQL)
+
+---
+
+## On top of JVM what languages are popular and used where?
+
+Some other languages that run on the JVM:
+
+- Kotlin (Procedural programming language)
+- Scala (Procedural programming language)
+- Clojure (Functional programming language)
+
+---
+
+## SDK
+
+Software Development Kit
+- A set of APIs and libraries to develop software.
+- It's a collection of classes, interfaces, methods, etc. that are used by the application.
+
+## API
+
+Application Programming Interface
+- During the programming process, how will you use a 3rd party program to do something?
+Types of API:
+- RESTful APIs
+- RPC APIs
+
+--
+
+## 3rd Party Package Consumption (dependency consumption) registries
+
+Web developers:
+- Node.js (npm registry) / Deno.js (JSR registry) / Bun.js
+
+Rust developers - Cargo
+- Python: pypi.org, conda-forge, etc.
+
+Go: Directly downloaded from some git server. You can specify the git commit hash / git tag.
+
+---
+
+## Shared Library (.so , .dll)
+
+Shared Library is compiled code which can be used in that particular OS and CPU arch.
+- Statically linked: The library is included with the executable file, so it's not loaded at runtime.
+- Dynamically linked: The library is separate from the executable file, so it's loaded at runtime.
+
+---
+
+## Dependency Management
+
+- Some tool provided by the programming language is responsible for dependency management. (npm, pnpm, yarn ; cargo ; pip).
+- Packages are downloaded and saved in the context of either:
+  + Local source code (Nodejs).
+  + Global system (python / golang).
+
+Java uses `JAR` files for software distribution. JAR files should contain .class files.
+
+---
+
+## Configuration file(s) for dependency management.
+
+node / bun: `package.json`
+python: `requriements.txt`
+rust: `Cargo.toml`.
+java: `pom.xml`
+
+It saves the list of all the dependencies and the project metadata in a single file.
+
+---
+
+## How dependency tree is computed and stored?
+
+- Dependency tree is computed by parsing the configuration files.
+
+Computation is done in greedy mode.
++ The first level of dependencies are added to the list.
++ Then, for each dependency, we check if it has already been added to the list or not.
+  + If yes, then we skip that dependency and move on to the next one.
+  + If no, then we add it to the list.
++ We repeat this process until all dependencies are added to the list.
+
+---
+
+### Dependency Resolution failure
+
+Dependency resolver will fail to resolve to a particular version of a package if their is disjoint range of versions required for that package.
+
+Example:
+
+- Package a (1.2) requires x >= 1.0
+- Package b (1.3) requires x < 0.8
+
+We have disjoint interval here, so we cannot resolve to any version of the package `x`.
++ The package manager can either choose to ignore this dependency or throw an error.
+
+---
+
+### Lockfiles
+
+Lockfile contains:
+- Resolved versions of direct and transitive dependencies
+- The download location for each dependency
+- The hash of the downloaded file
+
+node / bun: `package-lock.json`
+go: `go.sum`
+
+**Python does not officially provide any locakfile management system**.
+But there are multiple 3rd party tools for python to manage lockfiles.
++ [pipenv](https://github.com/pypa/pipenv)
++ [poetry](https://python-poetry.org/)
+
+
