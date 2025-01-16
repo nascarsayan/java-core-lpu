@@ -203,4 +203,211 @@ But there are multiple 3rd party tools for python to manage lockfiles.
 + [pipenv](https://github.com/pypa/pipenv)
 + [poetry](https://python-poetry.org/)
 
+ ---
+
+### Dependency Management in Java
+
+There are multiple tools which can be used to manage dependencies:
+- Maven (since Java 1.5)
+- Gradle (since Java 6)
+- Bazel (since Java 8)
+
+Each one has their own configuration file, but the underlying concept is similar.
+- Maven uses a file called `pom.xml` to define all of its dependencies and configurations.
+The configuration language is `XML` **which is not very human readable.**
+- Gradle can use any of these languages for configuration ([domain specific language](https://www.google.com/search?q=domain+specific+language)):
+   + Groovy (since Java 1.9)
+   + Kotlin (since Java 8)
+  These are much more human readable compared to `XML`.
+
+---
+
+### Generate boilerplate of starter project in Java
+
+To get samples of the config files / starter project:
+1. visit https://start.spring.io/
+2. make the selection and click on generate.
+    
+    <img src="./spring_init.jpg" alt="spring_init" width="400"/>
+
+---
+zoom: 0.65
+---
+
+### Sample gradle dependency file (in Kotlin DSL)
+
+```kotlin
+plugins {
+	kotlin("jvm") version "1.9.25"
+	kotlin("plugin.spring") version "1.9.25"
+	id("org.springframework.boot") version "3.4.1"
+	id("io.spring.dependency-management") version "1.1.7"
+}
+
+group = "com.lpu.javacore"
+version = "0.0.1-SNAPSHOT"
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation("org.springframework.boot:spring-boot-starter-jdbc")
+	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+	implementation("org.jetbrains.kotlin:kotlin-reflect")
+	runtimeOnly("com.h2database:h2")
+	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
+	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+}
+
+kotlin {
+	compilerOptions {
+		freeCompilerArgs.addAll("-Xjsr305=strict")
+	}
+}
+
+tasks.withType<Test> {
+	useJUnitPlatform()
+}
+```
+
+---
+
+### Meaning of all these functions
+
+- kotlin("jvm") - Applies Kotlin plugins maintained by JetBrains
+- id("org.springframework.boot") - Applies third-party plugins by their ID
+
+```kotlin
+// Regular compile and runtime dependency
+implementation(...)
+// Only needed at runtime, not for compilation
+runtimeOnly(...)
+// Dependency only for test compilation and execution
+testImplementation(...)
+// Dependency only for test runtime
+testRuntimeOnly(...)
+```
+
+---
+zoom: 0.8
+---
+
+### Sample Maven project
+
+Maven uses XML. This is the maven `pom.xml` file for the same starter project:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.4.1</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.lpu.javacore</groupId>
+	<artifactId>code</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>code</name>
+	<description>Demo project for Spring Boot</description>
+	<url/>
+	<licenses>
+		<license/>
+	</licenses>
+	<developers>
+		<developer/>
+	</developers>
+	<scm>
+		<connection/>
+		<developerConnection/>
+		<tag/>
+		<url/>
+	</scm>
+	<properties>
+		<java.version>21</java.version>
+		<kotlin.version>1.9.25</kotlin.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.module</groupId>
+			<artifactId>jackson-module-kotlin</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jetbrains.kotlin</groupId>
+			<artifactId>kotlin-reflect</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jetbrains.kotlin</groupId>
+			<artifactId>kotlin-stdlib</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jetbrains.kotlin</groupId>
+			<artifactId>kotlin-test-junit5</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
+		<testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.jetbrains.kotlin</groupId>
+				<artifactId>kotlin-maven-plugin</artifactId>
+				<configuration>
+					<args>
+						<arg>-Xjsr305=strict</arg>
+					</args>
+					<compilerPlugins>
+						<plugin>spring</plugin>
+					</compilerPlugins>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.jetbrains.kotlin</groupId>
+						<artifactId>kotlin-maven-allopen</artifactId>
+						<version>${kotlin.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
+
+```
 
