@@ -1,0 +1,16 @@
+{
+  "name": "slides",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "slidev build md/*md && cp index.html md/dist",
+    "dev": "slidev --open",
+    "export": "slidev export --with-toc md/*.md"
+  },
+  "dependencies": {
+    "@slidev/cli": "^51.0.1",
+    "@slidev/theme-default": "latest",
+    "@slidev/theme-seriph": "latest",
+    "vue": "^3.5.13"
+  }
+}

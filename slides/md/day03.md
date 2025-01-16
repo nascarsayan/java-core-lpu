@@ -3,6 +3,7 @@ theme: default
 class: 'text-center'
 transition: slide-left
 title: Day 3
+exportFilename: Day_03.pdf
 mdc: true
 ---
 
@@ -20,12 +21,11 @@ layout: default
 
 # Table of contents
 
-
-<Toc maxDepth="1"></Toc>
+<Toc columns=3></Toc>
 
 ---
 
-### Agenda
+# Agenda
 
 - Compilation and Running process
 - Compiled vs Interpreted languages
@@ -34,7 +34,7 @@ layout: default
 
 ---
 
-## Compilation and running process
+# Compilation and running process
 
 Computer needs assembly code to be run on the CPU.
 Assembly language is a low level language that can be directly understood by the computer.
@@ -49,7 +49,7 @@ Newer languages with higher levels of abstration gradually came to the market.
 
 ---
 
-## Compiled languages
+# Compiled languages
 
 - A code in C / C++ / Golang / Rust
 - Compiler will take the code as input and output a binary.
@@ -62,7 +62,7 @@ Newer languages with higher levels of abstration gradually came to the market.
 
 ---
 
-## Interpreted languages
+# Interpreted languages
 
 - A code
 - Interpreter always requires a 2-step process.
@@ -74,7 +74,7 @@ Newer languages with higher levels of abstration gradually came to the market.
 
 ---
 
-## How a Java code is ultimately executed by the device.
+# How a Java code is ultimately executed by the device.
 
 Java is neither completely compiled nor interpreted. It's a mix of both.
 - Java code is compiled to bytecode using `javac`.
@@ -83,7 +83,7 @@ Java is neither completely compiled nor interpreted. It's a mix of both.
 
 ---
 
-## Paradigms
+# Paradigms
 
 - Functional programming.
   Example: Haskell, Lisp, Clojure, Scala
@@ -93,7 +93,7 @@ Java is neither completely compiled nor interpreted. It's a mix of both.
 
 ---
 
-## On top of JVM what languages are popular and used where?
+# On top of JVM what languages are popular and used where?
 
 Some other languages that run on the JVM:
 
@@ -103,13 +103,13 @@ Some other languages that run on the JVM:
 
 ---
 
-## SDK
+# SDK
 
 Software Development Kit
 - A set of APIs and libraries to develop software.
 - It's a collection of classes, interfaces, methods, etc. that are used by the application.
 
-## API
+# API
 
 Application Programming Interface
 - During the programming process, how will you use a 3rd party program to do something?
@@ -117,21 +117,19 @@ Types of API:
 - RESTful APIs
 - RPC APIs
 
---
+---
 
-## 3rd Party Package Consumption (dependency consumption) registries
+# 3rd Party Package Consumption (dependency consumption) registries
 
-Web developers:
+
 - Node.js (npm registry) / Deno.js (JSR registry) / Bun.js
-
-Rust developers - Cargo
+- Rust - Cargo
 - Python: pypi.org, conda-forge, etc.
-
-Go: Directly downloaded from some git server. You can specify the git commit hash / git tag.
+- Go: Directly downloaded from some git server. You can specify the git commit hash / git tag.
 
 ---
 
-## Shared Library (.so , .dll)
+# Shared Library (.so , .dll)
 
 Shared Library is compiled code which can be used in that particular OS and CPU arch.
 - Statically linked: The library is included with the executable file, so it's not loaded at runtime.
@@ -139,7 +137,7 @@ Shared Library is compiled code which can be used in that particular OS and CPU 
 
 ---
 
-## Dependency Management
+# Dependency Management
 
 - Some tool provided by the programming language is responsible for dependency management. (npm, pnpm, yarn ; cargo ; pip).
 - Packages are downloaded and saved in the context of either:
@@ -150,18 +148,18 @@ Java uses `JAR` files for software distribution. JAR files should contain .class
 
 ---
 
-## Configuration file(s) for dependency management.
+# Configuration file(s) for dependency management.
 
-node / bun: `package.json`
-python: `requriements.txt`
-rust: `Cargo.toml`.
-java: `pom.xml`
+- node / bun: `package.json`
+- python: `requriements.txt`
+- rust: `Cargo.toml`.
+- java: `pom.xml`
 
 It saves the list of all the dependencies and the project metadata in a single file.
 
 ---
 
-## How dependency tree is computed and stored?
+# How dependency tree is computed and stored?
 
 - Dependency tree is computed by parsing the configuration files.
 
@@ -174,7 +172,7 @@ Computation is done in greedy mode.
 
 ---
 
-### Dependency Resolution failure
+# Dependency Resolution failure
 
 Dependency resolver will fail to resolve to a particular version of a package if their is disjoint range of versions required for that package.
 
@@ -188,7 +186,7 @@ We have disjoint interval here, so we cannot resolve to any version of the packa
 
 ---
 
-### Lockfiles
+# Lockfiles
 
 Lockfile contains:
 - Resolved versions of direct and transitive dependencies
@@ -203,9 +201,9 @@ But there are multiple 3rd party tools for python to manage lockfiles.
 + [pipenv](https://github.com/pypa/pipenv)
 + [poetry](https://python-poetry.org/)
 
- ---
+---
 
-### Dependency Management in Java
+# Dependency Management in Java
 
 There are multiple tools which can be used to manage dependencies:
 - Maven (since Java 1.5)
@@ -222,7 +220,7 @@ The configuration language is `XML` **which is not very human readable.**
 
 ---
 
-### Generate boilerplate of starter project in Java
+# Generate boilerplate of starter project in Java
 
 To get samples of the config files / starter project:
 1. visit https://start.spring.io/
@@ -234,7 +232,7 @@ To get samples of the config files / starter project:
 zoom: 0.65
 ---
 
-### Sample gradle dependency file (in Kotlin DSL)
+# Sample gradle dependency file (in Kotlin DSL)
 
 ```kotlin
 plugins {
@@ -281,7 +279,7 @@ tasks.withType<Test> {
 
 ---
 
-### Meaning of all these functions
+# Meaning of all these functions
 
 - kotlin("jvm") - Applies Kotlin plugins maintained by JetBrains
 - id("org.springframework.boot") - Applies third-party plugins by their ID
@@ -301,7 +299,7 @@ testRuntimeOnly(...)
 zoom: 0.8
 ---
 
-### Sample Maven project
+# Sample Maven project
 
 Maven uses XML. This is the maven `pom.xml` file for the same starter project:
 
@@ -411,3 +409,124 @@ Maven uses XML. This is the maven `pom.xml` file for the same starter project:
 
 ```
 
+
+---
+zoom: 0.8
+---
+
+# Data structures in C++ and Java
+
+| C++ Data Structure   | Java Equivalent           |
+|----------------------|---------------------------|
+| vector               | ArrayList                 |
+| map                  | TreeMap                   |
+| unordered_map        | HashMap                   |
+| set                  | TreeSet                   |
+| unordered_set        | HashSet                   |
+| priority_queue       | PriorityQueue             |
+| stack                | Stack                     |
+| deque                | ArrayDeque                |
+
+---
+zoom: 0.5
+---
+
+# ArrayList
+
+| Operation | Time Complexity | Notes |
+|-----------|----------------|--------|
+| Insertion at end (add) | O(1) amortized | May trigger resizing of underlying array |
+| Insertion at start | O(n) | Requires shifting all elements right |
+| Insertion at position i | O(n-i) | Requires shifting elements from i to n |
+| Deletion at end (remove) | O(1) | Simple operation, no shifting needed |
+| Deletion at start | O(n) | Requires shifting all elements left |
+| Deletion at position i | O(n-i) | Requires shifting elements from i+1 to n |
+| Search / Check existence | O(n) | Linear search through array |
+
+Additional relevant operations:
+| Operation | Time Complexity | Notes |
+|-----------|----------------|--------|
+| Size lookup | O(1) | Maintained as a variable |
+| Clear | O(1) | Just resets size counter |
+| Contains | O(n) | Similar to search |
+| Iteration | O(n) | Sequential access |
+| Clone | O(n) | Must copy all elements |
+
+---
+
+
+# HashSet
+
+```mermaid
+graph TD
+    subgraph HashSet Overview
+        Input[Input Elements] --> HC[Hash Function]
+        HC --> HT[Hash Table/Buckets]
+    end
+
+    subgraph Hash Table Internal
+        B0[Bucket 0] --> L0[null]
+        B1[Bucket 1] --> E1[Element A] --> E2[Element Q]
+        B2[Bucket 2] --> L2[null]
+        B3[Bucket 3] --> E3[Element D]
+        B4[Bucket 4] --> L4[null]
+        B5[Bucket 5] --> E4[Element M] --> E5[Element X]
+    end
+
+    style Input fill:#f9f,stroke:#333
+    style HC fill:#bbf,stroke:#333
+    style HT fill:#bfb,stroke:#333
+```
+
+
+---
+zoom: 0.6
+---
+
+## HashSet
+
+| Operation | Time Complexity | Notes |
+|-----------|----------------|--------|
+| Add | O(1) average, O(n) worst | Worst case when many collisions lead to long chain/tree |
+| Remove | O(1) average, O(n) worst | Similar to add operation |
+| Contains | O(1) average, O(n) worst | Hash computation + bucket lookup |
+| Clear | O(1) | Simply resets all buckets |
+| Size | O(1) | Maintained as variable |
+
+Additional important operations:
+| Operation | Time Complexity | Notes |
+|-----------|----------------|--------|
+| Iterator next() | O(h/n) | h = table capacity, n = elements |
+| Iterator hasNext() | O(h/n) | Same as next() |
+| Clone | O(n) | Must copy all elements |
+| All elements equal | O(min(n1,n2)) | For two sets of size n1, n2 |
+| Hash computation for String | O(k) | k = length of string |
+| Rehashing | O(n) | When load factor exceeded |
+| Bulk operations (addAll, removeAll, etc.) | O(n) | n = number of elements in other collection |
+
+
+---
+zoom: 0.6
+---
+
+# HashMap
+
+| Operation | Time Complexity | Notes |
+|-----------|----------------|--------|
+| Insertion (put) | O(1) average, O(n) worst | Worst case when many collisions occur |
+| Deletion (remove) | O(1) average, O(n) worst | Similar to insertion |
+| Search (get) | O(1) average, O(n) worst | Hash calculation + bucket access |
+| Contains key | O(1) average, O(n) worst | Similar to search |
+| Contains value | O(n) | Must traverse all buckets |
+
+Additional relevant operations:
+| Operation | Time Complexity | Notes |
+|-----------|----------------|--------|
+| Clear | O(1) | Resets all buckets |
+| Size lookup | O(1) | Maintained as variable |
+| Iteration | O(n) | Must visit all entries |
+| Clone | O(n) | Must copy all entries |
+| Hash computation | O(1) | For simple keys like integers |
+| Hash computation for String | O(k) | k = length of string |
+| Get all keys/values | O(n) | Must traverse all entries |
+| Rehashing | O(n) | Occurs when load factor exceeded |

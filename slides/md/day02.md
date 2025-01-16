@@ -3,6 +3,7 @@ theme: default
 class: 'text-center'
 transition: slide-left
 title: Day 2
+exportFilename: Day_02.pdf
 mdc: true
 ---
 
@@ -21,7 +22,7 @@ layout: default
 # Table of contents
 
 
-<Toc maxDepth="1"></Toc>
+<Toc columns=3></Toc>
 
 ---
 
