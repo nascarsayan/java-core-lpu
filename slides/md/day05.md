@@ -9,7 +9,7 @@ mdc: true
 
 # Day 5
 
-# There is no magic, every convenience is just an abstraction
+## There is no magic, every convenience is just an abstraction
 
 <div class="pt-12">
   <span @click="$slidev.nav.next" class="px-2 py-1 rounded cursor-pointer" flex="~ justify-center items-center gap-2" hover="bg-white bg-opacity-10">
@@ -21,13 +21,13 @@ mdc: true
 layout: default
 ---
 
-# Table of contents
+## Table of contents
 
 <Toc columns=3></Toc>
 
 ---
 
-# Counting Towers
+## Counting Towers
 
 ```java
 import java.util.HashMap;
@@ -263,3 +263,183 @@ Key Points:
 - Non-static methods can access static members because static members are shared across all instances
 
 ---
+
+## Polymorphism
+
+- Polymorphism is the ability of an object to take on many forms.
+- There are two types of polymorphism in Java: compile-time polymorphism and runtime polymorphism.
+  + Compile-time polymorphism is method overloading.
+  + Runtime polymorphism is method overriding.
+
+---
+
+## Method Overloading
+
+- Method overloading is a feature that allows a class to have more than one method having the same name, if their argument lists are different.
+- It is similar to constructor overloading in Java, that allows a class to have more than one constructor having different argument lists.
+- Overloading cannot differ in return type alone.
+
+```java
+// example of a method overloading related to sum
+class Sum {
+    int sum(int a, int b) {
+        return a + b;
+    }
+
+    int sum(int a, int b, int c) {
+        return a + b + c;
+    }
+
+    double sum(double a, double b) {
+        return a + b;
+    }
+
+    public static void main(String[] args) {
+        Sum s = new Sum();
+        System.out.println(s.sum(10, 20)); // 30
+        System.out.println(s.sum(10, 20, 30)); // 60
+        System.out.println(s.sum(10.5, 20.5)); // 31.0
+    }
+}
+```
+
+- We will cover more on method overriding after introducing inheritance.
+
+---
+
+## Inheritance
+
+- Inheritance is a mechanism in which one class acquires the properties and behavior of another class.
+- Inheritance from multiple parent classes is not allowed in Java.
+  `class C extends A, B {` is not allowed in Java. 
+- Example:
+
+```mermaid
+classDiagram
+    class Animal {
+        <<abstract>>
+        +eat()
+        +sleep()
+    }
+    class Dog {
+        +bark()
+    }
+    class Cat {
+        +meow()
+    }
+    Animal <|-- Dog
+    Animal <|-- Cat
+```
+
+---
+
+## What happens in Inheritance
+
+- The class that is inherited is called the parent class, superclass
+- The class that does the inheriting is called the child class, subclass
+- The child class inherits all the properties and behavior of the parent class
+- The child class can extend the behavior of the parent class
+- The child class can **override** the behavior of the parent class
+- Typically parent class can describe a more generic behavior, and child class can describe a more specific behavior.
+
+---
+
+## Inheritance Example
+
+```java
+class Animal {
+    void eat() {
+        System.out.println("eating...");
+    }
+}
+
+class Dog extends Animal {
+    void bark() {
+        System.out.println("barking...");
+    }
+}
+
+class TestInheritance {
+    public static void main(String[] args) {
+        Dog d = new Dog();
+        d.bark();
+        d.eat();
+    }
+}
+```
+
+---
+
+## Inheritance (contd.)
+
+In the above example, `eat` method is inherited from the parent class `Animal` by the child class `Dog`.
+- The child class `Dog` can override the behavior of the parent class `Animal`.
+
+---
+
+## Method Overriding
+
+- Method overriding is a feature that allows a subclass or child class to provide a specific implementation of a method that is already provided by one of its super-classes (a.k.a. parent classes).
+- **All classes implicitly inherit from the `Object` class.**
+
+---
+
+## Method Overriding Example
+
+```java
+import java.util.Scanner;
+
+class A {
+
+}
+
+class B {
+
+}
+
+//class C extends A, B {
+//
+//}
+
+class Animal {
+    void eat() {
+        System.out.println("eating...");
+    }
+}
+
+class Dog extends Animal {
+    void eat() {
+        System.out.println("eating bread...");
+    }
+}
+
+class Cat extends Animal {
+    void eat() {
+        System.out.println("eating fish...");
+    }
+}
+
+public class Overriding {
+    public static void main(String[] args) {
+        Dog d = new Dog();
+        d.eat();
+
+        Scanner sc = new Scanner(System.in);
+        var str = sc.next();
+
+        Animal a = null;
+        if (str.charAt(0) == 'a') {
+            a = new Animal();
+        } else if (str.charAt(0) == 'd') {
+            a = new Dog();
+        } else if (str.charAt(0) == 'c') {
+            a = new Cat();
+        }
+
+        a.eat();
+
+//      Dog b = new Animal(); // this won't work.
+    }
+}
+
+```

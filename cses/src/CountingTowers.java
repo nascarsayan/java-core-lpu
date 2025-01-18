@@ -22,6 +22,7 @@ public class CountingTowers {
         public String toString() {
             return "width1: " + width1 + " width2: " + width2;
         }
+
     }
 
     static TotalWays solve(long n) {
