@@ -5,8 +5,8 @@ public class CountingTowers {
     static HashMap<Long, TotalWays> dp = new HashMap<>();
     static long mod = 1000000007;
 
-    // TotalWays is the count of ttotal number of ways we can
-    // constuct a tower of height n.
+    // TotalWays is the count of total number of ways we can
+    // construct a tower of height n.
     // width 1 ends with length 1,1. 🟩🟥
     // width 2 ends with 2. 🟩🟩
     static class TotalWays {
@@ -36,15 +36,19 @@ public class CountingTowers {
         // Ways in which we can solve n-1 height tower.
         var prev = solve(n-1);
 
+        // Level: N
+        // Level: N-1
+
         /*
-          🟥🟥  🟥🟦      🟥🟦
-          🟥🟥  🟥🟦      🟪🟦
+          🟪🟦      🟪🟦  🟥🟪  🟦🟩  🟥🟩 // Level N
+          🟥🟥      🟥🟩  🟥🟩  🟥🟩  🟥🟩 // Level N-1
         */
+
         var withWidth1 = (prev.width1 * 4 + prev.width2) % mod;
 
         /*
-          🟥🟦      🟥🟦  🟥🟥  🟥🟦  🟥🟥
-          🟥🟪      🟩🟪  🟩🟪  🟩🟩  🟩🟩
+          🟦🟦  🟥🟥      🟦🟦  // Level N
+          🟥🟥  🟥🟥      🟥🟪  // Level N-1
         */
         var withWidth2 = (prev.width1 + prev.width2 * 2) % mod;
         var res = new TotalWays(withWidth1, withWidth2);
