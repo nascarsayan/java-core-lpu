@@ -10,5 +10,6 @@ public class DistinctNumbers {
             vals.add(sc.nextLong());
         }
         System.out.println(vals.size());
+
     }
 }

@@ -2,12 +2,12 @@
 theme: default
 class: 'text-center'
 transition: slide-left
-title: Day 4
-exportFilename: Day_04.pdf
+title: Day 5
+exportFilename: Day_05.pdf
 mdc: true
 ---
 
-# Day 4
+# Day 5
 
 # There is no magic, every convenience is just an abstraction
 
@@ -92,6 +92,152 @@ public class CountingTowers {
             var res = solve(height);
             System.out.println((res.width1 + res.width2) % mod);
         }
+    }
+}
+```
+
+---
+
+## Agenda
+
+- Java APIs (STL, syntax and more) (part 1)
+
+---
+
+## Namespace
+
+- It's a group.
+- In Java, the first level of group is the package.
+
+---
+
+## Access modifier
+
+- Access modifiers: `public`, `protected`, `private`, `default`
+
+
+Here's a breakdown of Java's access modifiers and their visibility levels:
+
+| Modifier | Class | Package | Subclass | World |
+|----------|--------|----------|-----------|--------|
+| private | ✓ | ✗ | ✗ | ✗ |
+| default (no modifier) | ✓ | ✓ | ✗ | ✗ |
+| protected | ✓ | ✓ | ✓ | ✗ |
+| public | ✓ | ✓ | ✓ | ✓ |
+
+---
+
+## Object Oriented Programming
+
+- There is blueprint called class.
+- From each blueprint, we can create concrete stuff called objects.
+
+---
+
+## Static / final keyword
+
+Attributes which are associated with the class.
+
+```java
+class Car {
+    enum Color {
+        Red,
+        Green,
+        Blue
+    }
+
+    Color color;
+    int seatCount;
+    final static int wheelCount = 4;
+
+    Car(Color color, int seatCount) {
+        this.color = color;
+        this.seatCount = seatCount;
+    }
+
+}
+
+public class CarExample {
+
+    public static void main(String[] args) {
+        var c = new Car(Car.Color.Blue, 4);
+        System.out.println(Car.wheelCount);
+//        Car.wheelCount = 10;
+    }
+}
+```
+
+---
+
+## Static / Non-static
+
+```java
+class Car {
+    enum Color {
+        Red,
+        Green,
+        Blue
+    }
+
+    String model;
+    Color color;
+    int seatCount;
+    final static int wheelCount = 4;
+
+    Car(String model, Color color, int seatCount) {
+        this.model = model;
+        this.color = color;
+        this.seatCount = seatCount;
+    }
+
+}
+
+public class CarExample {
+    
+    static int stat;
+    int nonStat;
+    
+//    CarExample() {
+//        
+//    }
+    
+    public void methodNonStat() {
+        
+    }
+    
+    public static void methodStat() {
+        
+    }
+    
+    public void nonStatic() {
+        var x = stat; // this works
+        var y = this.stat; // redundant this
+        methodStat();
+        this.methodStat(); // redundant this
+        this.methodNonStat();
+    }
+
+    public static void staticMethod() {
+        var x = stat; // this works
+//        var y = this.stat; // this does not work
+        methodStat();
+//        this.methodStat(); // not work
+//        this.methodNonStat();
+    }
+
+    public static void main(String[] args) {
+        var bmw = new Car("BMW", Car.Color.Blue, 4);
+        System.out.println(Car.wheelCount);
+
+        var lambo = new Car("Lambo", Car.Color.Red, 6);
+        System.out.println(Car.wheelCount);
+//        Car.wheelCount = 10;
+
+        var obj = new CarExample();
+        var x = obj.nonStat;
+        
+        // this will not work:
+        // this.xyz
     }
 }
 ```

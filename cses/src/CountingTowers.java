@@ -2,7 +2,6 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class CountingTowers {
-
     static HashMap<Long, TotalWays> dp = new HashMap<>();
     static long mod = 1000000007;
 
