@@ -241,3 +241,25 @@ public class CarExample {
     }
 }
 ```
+
+### Observations on Static
+
+- What is static?
+  - It's a keyword that is associated with the class.
+  - Definition: A static attribute is associated with the blueprint, i.e., the class. Each object does not have its own copy of the static attribute.
+- Non-static attributes are associated with the object. Each object has its own copy of the non-static attribute. 
+
+- Static and Non-static inter-accessibility table:
+
+| Can Access → <br>From ↓ | Static Methods | Static Variables | Non-Static Methods | Non-Static Variables |
+|-------------------------|----------------|------------------|-------------------|---------------------|
+| Static Methods | ✓ | ✓ | ✗ | ✗ |
+| Non-Static Methods | ✓ | ✓ | ✓ | ✓ |
+
+Key Points:
+- Static members belong to the class itself
+- Non-static members belong to specific instances
+- Static methods can't directly access non-static members because there's no instance context
+- Non-static methods can access static members because static members are shared across all instances
+
+---
