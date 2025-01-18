@@ -275,3 +275,11 @@ public class PrefixTree {
     }
 }
 ```
+
+
+----
+
+## Homework
+
+- [Counting Towers](https://cses.fi/problemset/task/2413)
+- [Removal Game](https://cses.fi/problemset/task/1097)
