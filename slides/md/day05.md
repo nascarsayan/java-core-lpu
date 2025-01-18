@@ -443,3 +443,122 @@ public class Overriding {
 }
 
 ```
+
+---
+
+## Abstract Class
+
+- An abstract class is a class that is declared abstract—it may or may not include abstract methods.
+- Abstract classes cannot be instantiated, but they can be subclassed.
+- When an abstract class is subclassed, the subclass **usually** provides implementations for all of the abstract methods in its parent class. In some cases, the subclass may be declared abstract itself.
+- Abstract classes can have constructors.
+
+---
+
+## Abstract Class Example
+
+```java
+abstract class Animal {
+    abstract void eat();
+    void sleep() {
+        System.out.println("sleeping...");
+    }
+}
+
+class Dog extends Animal {
+    void eat() { // Must be implemented
+        System.out.println("eating bread...");
+    }
+}
+
+abstract class Mammal extends Animal {
+    abstract void walk();
+}
+```
+
+---
+
+## Interface
+
+- An interface is a reference type in Java. It is similar to abstract class because it cannot be instantiated. However, we cannot have any method implementations in an interface, in contrast to abstract classes.
+- A class implements an interface, thereby inheriting the abstract methods of the interface.
+- Along with abstract methods, an interface may also contain constants, default methods, static methods, and nested types.
+
+---
+
+## Interface Example
+
+```java
+interface Animal {
+    void eat();
+    void sleep();
+}
+
+class Dog implements Animal {
+    public void eat() {
+        System.out.println("eating bread...");
+    }
+    public void sleep() {
+        System.out.println("sleeping...");
+    }
+}
+```
+
+---
+
+## Interface and Abstract (contd.)
+
+```java
+public class Interface {
+
+    class Organism {
+        int lifespan;
+    }
+
+    interface Animal {
+        void eat();
+        void sleep();
+    }
+
+    interface Dangerous {
+        void attack();
+        void sleep();
+    }
+
+    class Dog extends Organism implements Animal, Dangerous {
+        public void eat() {
+            System.out.println("eating bread...");
+        }
+        public void sleep() {
+            System.out.println("sleeping...");
+        }
+
+        public void attack() {
+            System.out.println("attack...");
+            var z = this.lifespan;
+        }
+    }
+}
+```
+
+---
+
+## Collections - Set
+
+- A set is a collection that contains no duplicate elements.
+- Lookup, insertion, and removal are all O(1) on average.
+- Set is a generic interface that extends the Collection interface.
+
+```mermaid
+classDiagram
+    class Set {
+        +add()
+        +remove()
+        +contains()
+        +size()
+    }
+    Set <|-- HashSet
+    Set <|-- LinkedHashSet
+    Set <|-- TreeSet
+    Collection <|-- Set
+```
