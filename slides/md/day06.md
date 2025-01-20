@@ -293,6 +293,8 @@ If we want a Java deque collection which is thread-safe, we can use `ConcurrentL
 
 ---
 
+---
+
 ### Common Patterns using Dequeue
 
 Common DSA Applications:
@@ -359,3 +361,87 @@ class Queue<T> {
     public boolean isEmpty() { return deque.isEmpty(); }
 }
 ```
+
+---
+
+## Map Interface
+
+Map is an interface in Java. There are three concrete classes that implement the Map interface:
+- HashMap
+  + Uses a hash table to store key-value pairs
+  + Best for general-purpose use, when order doesn't matter
+- TreeMap
+  + Keys are sorted naturally (by natural ordering or custom comparator)
+  + Useful for range operations (subMap, headMap, tailMap)
+- LinkedHashMap
+  + Maintains insertion order of entries using a doubly-linked list connecting all entries
+  + Can be configured to maintain access-order instead of insertion-order (useful for implementing LRU caches)
+
+---
+
+## Map Operations
+
+```java
+import java.util.*;
+
+public class MapOperations {
+    public static void main(String[] args) {
+        // 1. Common Map Implementations
+        HashMap<String, Integer> hashMap = new HashMap<>();
+        TreeMap<String, Integer> treeMap = new TreeMap<>();
+        LinkedHashMap<String, Integer> linkedHashMap = new LinkedHashMap<>();
+        
+        // 2. Basic Operations
+        // Adding elements
+        hashMap.put("key1", 100);
+        hashMap.putIfAbsent("key2", 200);      // Only if key doesn't exist
+        
+        // Retrieving elements
+        int value = hashMap.get("key1");       // Returns null if not found
+        int defaultValue = hashMap.getOrDefault("key3", 0);  // Returns default if not found
+        
+        // Removing elements
+        hashMap.remove("key1");                // Remove by key
+        hashMap.remove("key1", 100);           // Remove only if key-value matches
+        
+        // Checking existence
+        boolean hasKey = hashMap.containsKey("key1");
+        boolean hasValue = hashMap.containsValue(100);
+        
+        // Size operations
+        int size = hashMap.size();
+        boolean isEmpty = hashMap.isEmpty();
+        
+        // 3. Bulk Operations
+        hashMap.putAll(anotherMap);            // Add all from another map
+        hashMap.clear();                       // Remove all entries
+        
+        // 4. Views of the Map
+        Set<String> keys = hashMap.keySet();   // Set of keys
+        Collection<Integer> values = hashMap.values(); // Collection of values
+        Set<Map.Entry<String, Integer>> entries = hashMap.entrySet(); // Set of entries
+        
+        // 5. Modern API Operations (Java 8+)
+        // Compute values
+        hashMap.compute("key1", (k, v) -> (v == null) ? 1 : v + 1);
+        hashMap.computeIfAbsent("key2", k -> k.length());
+        hashMap.computeIfPresent("key3", (k, v) -> v * 2);
+        
+        // Merge values
+        hashMap.merge("key1", 1, Integer::sum);  // Add if exists, put if doesn't
+    }
+}
+```
+
+---
+
+## Set Interface
+
+Set is an interface in Java. There are three concrete classes that implement the Set interface:
+- HashSet
+- TreeSet
+- LinkedHashSet
+
+- If you have a map, the set can be implemented using the map.
+- The value does not matter in the map, just the keys matter.
+- Internally in JAVA SDK (JDK) source code, the set is implemented using the map.
