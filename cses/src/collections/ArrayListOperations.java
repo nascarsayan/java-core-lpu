@@ -60,10 +60,10 @@ public class ArrayListOperations {
         Collections.max(list);        // Find maximum element: O(n)
         Collections.min(list);        // Find minimum element: O(n)
         Collections.frequency(list, 5); // Count occurrences: O(n)
-
-        list.add(-5);
-        list.add(-10);
-        list.add(10);
+//
+//        list.add(-5);
+//        list.add(-10);
+//        list.add(10);
 
         var k = Collections.binarySearch(list, 5); // Binary search (requires sorted list): O(log n)
         System.out.println(k);
