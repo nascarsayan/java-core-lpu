@@ -267,3 +267,13 @@ https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/descrip
 [src code](../../cses/src/leetcode/SortedArrayToBST.java)
 
 ![explanation](../images/leetcode-0108.svg)
+
+--
+
+## Leetcode - Unique Binary Search Trees
+
+https://leetcode.com/problems/unique-binary-search-trees/description/
+
+[src code](../../cses/src/leetcode/UniqueBST.java)
+
+![explanation](../images/leetcode-0096.svg)
