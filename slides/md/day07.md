@@ -181,8 +181,13 @@ public class Lambdas {
 
 ---
 
-## 
+## Tree
 
+- It's a special kind of graph
+- A tree is a collection of nodes connected by directed (or undirected) edges.
+- To visit a node from the root, there is exactly one path.
+- A tree is a connected acyclic graph.
+- A tree with n nodes has n-1 edges.
 
 ---
 
@@ -192,3 +197,59 @@ public class Lambdas {
 - A binary tree is a special case of a K-ary tree, where k is 2.
 - The root of the tree is the first node in the tree.
 - The height of a binary tree is the number of edges between the root and the deepest leaf node.
+
+```java
+package collections;
+
+public class BinaryTree {
+
+    static class Node {
+        int val;
+        Node left, right;
+
+        Node(int val) {
+            this.val = val;
+        }
+
+        // Very rare constructor
+        Node(int val, Node left, Node right) {
+            this.val = val;
+            this.left = left;
+            this.right = right;
+        }
+    }
+
+    public static void main(String[] args) {
+
+        var node2 = new Node(-1);
+        var node3 = new Node(5);
+        var node1 = new Node(1, node2, node3);
+
+//        node1.left = node2;
+//        node1.right = node3;
+
+        var root = node1;
+
+    }
+}
+
+```
+
+## Red Black Trees
+
+- Red-Black tree is a self-balancing binary search tree.
+- visualization: https://www.cs.usfca.edu/~galles/visualization/RedBlack.html
+- **It is used in TreeMap and TreeSet in Java.**
+
+---
+
+## Real World examples of Abstraction
+
+[More info](../claude/Abstraction.md)
+
+The good:
+
+
+The ugly:
+- https://news.ycombinator.com/item?id=42506984
+- https://fhur.me/posts/2024/thats-not-an-abstraction
