@@ -71,6 +71,11 @@ public class Lambdas {
 
 We must provide our custom comparator function while sorting an array of custom class' objects.
 
+** We want to sort a bunch øf students according to the following criteria: **
+- Marks in descending order (Higher marks gets the upper hand)
+- Income in ascending order (Lower income gets the upper hand)
+- Age in descending order (Higher age gets the upper hand)
+
 ```java
 import java.util.Arrays;
 
@@ -116,7 +121,7 @@ public class Lambdas {
 
 ---
 
-## Custom Sorting in Java (using Mthod reference)
+## Custom Sorting in Java (using Method reference)
 
 ```java
 import java.util.Arrays;
