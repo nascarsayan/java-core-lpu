@@ -67,7 +67,7 @@ public class Lambdas {
 
 ---
 
-## Custom Sorting in Java
+## Custom Sorting in Java (using Lambda)
 
 We must provide our custom comparator function while sorting an array of custom class' objects.
 
@@ -105,6 +105,55 @@ public class Lambdas {
             if (a.incomeUSD != b.incomeUSD) return a.incomeUSD - b.incomeUSD;
             return b.age - a.age;
         });
+        for (var s: students) System.out.println(s);
+
+        // Below will not work.
+        // Arrays.sort(students);
+        // for (var s: students) System.out.println(s);
+    }
+}
+```
+
+---
+
+## Custom Sorting in Java (using Mthod reference)
+
+```java
+import java.util.Arrays;
+
+class Person {
+    int age;
+    int marks;
+    int incomeUSD;
+
+    Person(int age, int marks, int incomeUSD) {
+        this.age = age;
+        this.marks = marks;
+        this.incomeUSD = incomeUSD;
+    }
+
+    static int compare(Person a, Person b) {
+        if (a.marks != b.marks) return b.marks - a.marks;
+        if (a.incomeUSD != b.incomeUSD) return a.incomeUSD - b.incomeUSD;
+        return b.age - a.age;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("marks = %d%%, income = %d USD, age = %d yrs", this.marks, this.incomeUSD, this.age);
+    }
+}
+
+public class Lambdas {
+
+    public static void main(String[] args) {
+        Person[] students = new Person[4];
+        students[0] = new Person(18, 90, 5000);
+        students[1] = new Person(18, 90, 4000);
+        students[2] = new Person(20, 90, 4000);
+        students[3] = new Person(20, 88, 4000);
+
+        Arrays.sort(students, Person::compare);
         for (var s: students) System.out.println(s);
 
         // Below will not work.

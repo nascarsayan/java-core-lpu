@@ -11,6 +11,12 @@ class Person {
         this.incomeUSD = incomeUSD;
     }
 
+    static int compare(Person a, Person b) {
+        if (a.marks != b.marks) return b.marks - a.marks;
+        if (a.incomeUSD != b.incomeUSD) return a.incomeUSD - b.incomeUSD;
+        return b.age - a.age;
+    }
+
     @Override
     public String toString() {
         return String.format("marks = %d%%, income = %d USD, age = %d yrs", this.marks, this.incomeUSD, this.age);
@@ -37,16 +43,17 @@ public class Lambdas {
         students[2] = new Person(20, 90, 4000);
         students[3] = new Person(20, 88, 4000);
 
-        Arrays.sort(students, (a, b) -> {
-            if (a.marks != b.marks) return b.marks - a.marks;
-            if (a.incomeUSD != b.incomeUSD) return a.incomeUSD - b.incomeUSD;
-            return b.age - a.age;
-        });
+//        Arrays.sort(students, (a, b) -> {
+//            if (a.marks != b.marks) return b.marks - a.marks;
+//            if (a.incomeUSD != b.incomeUSD) return a.incomeUSD - b.incomeUSD;
+//            return b.age - a.age;
+//        });
+        Arrays.sort(students, Person::compare);
         for (var s: students) System.out.println(s);
 
         // We must provide our custom comparator function while sorting an array of custom class.
         // Below will not work.
-//        Arrays.sort(students);
-//        for (var s: students) System.out.println(s);
+        // Arrays.sort(students);
+        // for (var s: students) System.out.println(s);
     }
 }
