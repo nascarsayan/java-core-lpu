@@ -282,5 +282,7 @@ https://leetcode.com/problems/unique-binary-search-trees/description/
 
 ## Garbage collection
 
-![about GC](../claude/GarbageCollection.md)
+Managing memory using Ownership in Rust : https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html
+
+[about GC](../claude/GarbageCollection.md)
 
