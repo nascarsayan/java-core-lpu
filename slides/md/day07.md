@@ -253,3 +253,6 @@ The good:
 The ugly:
 - https://news.ycombinator.com/item?id=42506984
 - https://fhur.me/posts/2024/thats-not-an-abstraction
+
+## Priority Queue
+
