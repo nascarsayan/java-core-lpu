@@ -256,3 +256,11 @@ The ugly:
 
 ## Priority Queue
 
+[src code](../../cses/src/collections/PriorityQueueExamples.java)
+
+---
+
+## Leetcode - Convert Sorted Array to Binary Search Tree
+
+https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/description/
+

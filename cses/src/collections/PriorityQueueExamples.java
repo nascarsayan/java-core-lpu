@@ -39,7 +39,7 @@ public class PriorityQueueExamples {
 
         // Priority Queue with custom comparator for Task objects
         PriorityQueue<Task> taskQueue = new PriorityQueue<>(
-                (t1, t2) -> Integer.compare(t1.priority, t2.priority)
+                (t1, t2) -> t1.priority - t2.priority
         );
 
         taskQueue.offer(new Task("Write report", 3));
@@ -56,9 +56,6 @@ public class PriorityQueueExamples {
         PriorityQueue<Integer> kLargest = new PriorityQueue<>();  // min heap
         int k = 3;
         int[] nums = {10, 2, 5, 17, 7, 18, 6, 4};
-
-        // kth item in the sorted order: 3
-        // {2, 4, 5, 6, 7, 10, 17, 18};
 
         for (int num : nums) {
             kLargest.offer(num);
