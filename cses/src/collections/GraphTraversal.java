@@ -29,6 +29,23 @@ public class GraphTraversal {
         }
     }
 
+    private void dfs(
+            Graph.AdjacencyMatrix gr,
+            int max_v, int u, boolean[] visited) {
+        visited[u] = true;
+        System.out.printf("Have visited %d\n", u);
+        for (int v = 1; v <= max_v; v++) {
+            if (gr.graph[u][v] == 0) continue;
+            if (visited[v]) continue;
+            dfs(gr, max_v, v, visited);
+        }
+    }
+
+    public void DFS(Graph.AdjacencyMatrix gr, int max_v) {
+        boolean[] visited = new boolean[max_v+1];
+        dfs(gr, max_v, 1, visited);
+    }
+
     public static void main(String[] args) {
         // for 9 nodes, we create 10x10 amtrix with row 0 and col 0 empty, for the convenience of programmer.
         var gr = new Graph.AdjacencyMatrix(10);
@@ -45,6 +62,7 @@ public class GraphTraversal {
         gr.addEdgeDirected(7, 2, 1);
         gr.addEdgeDirected(9, 4, 1);
 
-        (new GraphTraversal()).BFS(gr, 10);
+//        (new GraphTraversal()).BFS(gr, 10);
+        (new GraphTraversal()).DFS(gr, 10);
     }
 }

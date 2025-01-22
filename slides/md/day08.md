@@ -87,3 +87,11 @@ layout: default
 [src code](../../cses/src/collections/GraphTraversal.java)
 
 ![explanation](../images/graphs_bfs.svg)
+
+---
+
+## DFS
+
+[src code](../../cses/src/collections/GraphTraversal.java)
+
+![explanation](../images/graphs_dfs.svg)
