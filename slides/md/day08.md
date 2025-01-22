@@ -56,3 +56,7 @@ layout: default
 ## Repn.
 
 ![graphs](../images/graphs.svg)
+
+## Adjacency List and Matrix
+
+[Graph src code](../../cses/src/collections/Graph.java)
