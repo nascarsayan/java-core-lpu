@@ -95,3 +95,13 @@ layout: default
 [src code](../../cses/src/collections/GraphTraversal.java)
 
 ![explanation](../images/graphs_dfs.svg)
+
+---
+
+## Map of Highest Peak - Leetcode
+
+https://leetcode.com/problems/map-of-highest-peak/
+
+[src code](../../cses/src/leetcode/daily/MapOfHighestPeak.java)
+
+![explanation](../images/mapOfHighestPeak.svg)
