@@ -6,8 +6,8 @@ public class Graph {
     static class AdjacencyMatrix {
         // count_v -> Count of vertices
         int[][] graph;
-        AdjacencyMatrix(int count_v) {
-            graph = new int[count_v][count_v];
+        AdjacencyMatrix(int max_v) {
+            graph = new int[max_v+1][max_v+1];
         }
 
         void addEdgeDirectedNoWeight(int u, int v) {

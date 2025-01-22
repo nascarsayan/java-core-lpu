@@ -57,6 +57,27 @@ layout: default
 
 ![graphs](../images/graphs.svg)
 
+---
+
 ## Adjacency List and Matrix
 
 [Graph src code](../../cses/src/collections/Graph.java)
+
+---
+
+## Graph Traversal
+
+- Traversing a graph means visiting all the nodes of a graph.
+- There are two standard methods to traverse a graph:
+  + Breadth First Search (BFS)
+  + Depth First Search (DFS)
+- Uses of traversal:
+  + Finding connected components
+  + Finding shortest path
+  + Detecting cycle
+  + Topological sorting
+  + Finding strongly connected components
+- BFS is going as wide as possible while travelling.
+- DFS is going as deep as possible while travelling.
+
+---
