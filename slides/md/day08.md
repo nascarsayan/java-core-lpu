@@ -81,3 +81,9 @@ layout: default
 - DFS is going as deep as possible while travelling.
 
 ---
+
+## BFS
+
+[src code](../../cses/src/collections/GraphTraversal.java)
+
+![explanation](../images/graphs_bfs.svg)
