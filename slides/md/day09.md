@@ -63,3 +63,22 @@ graph LR
 [src code](../../cses/src/collections/Kadane.java)
 
 ![explanation](../images/kadane.svg)
+
+---
+
+## Today's Leetcode
+
+https://leetcode.com/problems/count-servers-that-communicate/description/?envType=daily-question&envId=2025-01-23
+
+---
+
+## Valid Parenthesis
+
+https://leetcode.com/problems/valid-parentheses/description/
+
+---
+
+## Generate Parenthesis
+
+https://leetcode.com/problems/generate-parentheses/description/
+
