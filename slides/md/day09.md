@@ -88,6 +88,8 @@ https://leetcode.com/problems/generate-parentheses/description/
 
 ## Binary Search
 
+![explanation](../images/binary_search.svg)
+
 ---
 
 ## Binary Search Application
@@ -112,3 +114,18 @@ Reference: https://cp-algorithms.com/num_methods/binary_search.html
 *   [LeetCode - Find Peak Element](https://leetcode.com/problems/find-peak-element/)
 *   [LeetCode - Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/)
 *   [LeetCode - Find Right Interval](https://leetcode.com/problems/find-right-interval/)
+
+---
+
+# 33. Search in Rotated Sorted Array
+
+https://leetcode.com/problems/search-in-rotated-sorted-array/
+
+[src code](../../cses/src/leetcode/FindInRotatedSorted.java)
+
+---
+
+## Homework (Tomorrow)
+
+- https://cses.fi/problemset/task/1620
+- https://cses.fi/problemset/task/1085
