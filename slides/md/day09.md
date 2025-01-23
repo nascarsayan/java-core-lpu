@@ -57,3 +57,9 @@ graph LR
 [src code](../../cses/src/collections/Dijkstra.java)
 
 ![explanation](../images/dijkstra.svg)
+
+## Kadane's Algorithm
+
+[src code](../../cses/src/collections/Kadane.java)
+
+![explanation](../images/kadane.svg)
