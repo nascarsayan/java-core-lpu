@@ -88,3 +88,6 @@ Explanation: Machine 1 makes two products, machine 2 makes four products and mac
 
 https://cses.fi/problemset/task/1085
 
+[src code](../../code/src/cses/ArrayDivision.java)
+
+![explanation](../images/arrayDivision.svg)
