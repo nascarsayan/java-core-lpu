@@ -91,3 +91,17 @@ https://cses.fi/problemset/task/1085
 [src code](../../code/src/cses/ArrayDivision.java)
 
 ![explanation](../images/arrayDivision.svg)
+
+---
+
+## Other problems
+
+https://leetcode.com/problems/subarray-sum-equals-k/description/
+
+https://leetcode.com/problems/trapping-rain-water/description/
+
+Today's problem:
+
+https://leetcode.com/problems/find-eventual-safe-states/description/
+
+---
