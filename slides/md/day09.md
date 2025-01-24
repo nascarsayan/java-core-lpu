@@ -92,6 +92,80 @@ https://leetcode.com/problems/generate-parentheses/description/
 
 ---
 
+### **Binary Search on Monotonic True-False Arrays**
+
+#### **Key Idea**
+- Many problems can be reduced to finding a **transition point** in a **monotonic true-false array**.
+- Binary search efficiently finds this transition point in **O(log n)** time.
+
+---
+
+#### **What is a Monotonic True-False Array?**
+An array where:
+- All `false` values come before all `true` values (monotonic increasing), or
+- All `true` values come before all `false` values (monotonic decreasing).
+
+Example:
+```
+[false, false, false, true, true, true]
+```
+The transition point is where `false` changes to `true`.
+
+---
+
+#### **How Binary Search Works**
+1. **Define the Condition**:
+   - Use a function `check(x)` that returns `true` or `false` based on a condition.
+   - Example: `check(x)` could represent "is this version bad?" or "is this value valid?"
+
+2. **Set Up the Search Space**:
+   - Initialize `low` and `high` to cover the entire range.
+
+3. **Find the Transition Point**:
+   - Use binary search to narrow down the range:
+     - If `check(mid)` is `true`, move left (`high = mid - 1`).
+     - If `check(mid)` is `false`, move right (`low = mid + 1`).
+   - The transition point is at `low` (or `high`, depending on the problem).
+
+---
+
+#### **Example: Finding the First Valid Value**
+
+Suppose you have an array of values, and you want to find the **first value** where `check(x)` returns `true`.
+
+```python
+def findFirstValid(n):
+    low, high, ans = 0, n - 1, 0
+    while low <= high:
+        mid = low + (high - low) // 2
+        if check(mid):  # Transition point is in the left half
+            ans = mid
+            high = mid - 1
+        else:           # Transition point is in the right half
+            low = mid + 1
+    return ans
+```
+
+---
+
+#### **Why This Works**
+- The array is **monotonic**: `check(x)` transitions from `false` to `true` (or vice versa).
+- Binary search halves the search space at each step, making it **O(log n)**.
+
+---
+
+#### **Applications**
+1. **First Bad Version**:
+   - Find the first version where `check(x)` (e.g., "is this version bad?") returns `true`.
+
+2. **Peak Finding**:
+   - Find the peak in a mountain-like array.
+
+3. **Search in Rotated Sorted Array**:
+   - Find the pivot point where the array is rotated.
+
+---
+
 ## Binary Search Application
 
 Time complexity of Binary Search: `O(log (n))`
