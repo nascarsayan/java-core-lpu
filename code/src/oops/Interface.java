@@ -1,3 +1,5 @@
+package oops;
+
 public class Interface {
 
     class Organism {

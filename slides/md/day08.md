@@ -61,7 +61,7 @@ layout: default
 
 ## Adjacency List and Matrix
 
-[Graph src code](../../cses/src/collections/Graph.java)
+[Graph src code](../../code/src/collections/Graph.java)
 
 ---
 
@@ -84,7 +84,7 @@ layout: default
 
 ## BFS
 
-[src code](../../cses/src/collections/GraphTraversal.java)
+[src code](../../code/src/collections/GraphTraversal.java)
 
 ![explanation](../images/graphs_bfs.svg)
 
@@ -92,7 +92,7 @@ layout: default
 
 ## DFS
 
-[src code](../../cses/src/collections/GraphTraversal.java)
+[src code](../../code/src/collections/GraphTraversal.java)
 
 ![explanation](../images/graphs_dfs.svg)
 
@@ -102,6 +102,6 @@ layout: default
 
 https://leetcode.com/problems/map-of-highest-peak/
 
-[src code](../../cses/src/leetcode/daily/MapOfHighestPeak.java)
+[src code](../../code/src/leetcode/daily/MapOfHighestPeak.java)
 
 ![explanation](../images/mapOfHighestPeak.svg)

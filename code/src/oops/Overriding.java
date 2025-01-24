@@ -1,3 +1,5 @@
+package oops;
+
 import java.util.Scanner;
 
 class A {
@@ -8,7 +10,7 @@ class B {
 
 }
 
-//class C extends A, B {
+//class C extends oops.A, oops.B {
 //
 //}
 
@@ -49,6 +51,6 @@ public class Overriding {
 
         a.eat();
 
-//        Dog b = new Animal(); // this won't work.
+//        oops.Dog b = new oops.Animal(); // this won't work.
     }
 }

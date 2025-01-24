@@ -54,13 +54,13 @@ graph LR
     B-->|3|E
 ```
 
-[src code](../../cses/src/collections/Dijkstra.java)
+[src code](../../code/src/collections/Dijkstra.java)
 
 ![explanation](../images/dijkstra.svg)
 
 ## Kadane's Algorithm
 
-[src code](../../cses/src/collections/Kadane.java)
+[src code](../../code/src/collections/Kadane.java)
 
 ![explanation](../images/kadane.svg)
 
@@ -76,7 +76,7 @@ https://leetcode.com/problems/count-servers-that-communicate/description/?envTyp
 
 https://leetcode.com/problems/valid-parentheses/description/
 
-[src code](../../cses/src/leetcode/ValidParenthesis.java)
+[src code](../../code/src/leetcode/ValidParenthesis.java)
 
 ---
 
@@ -195,7 +195,7 @@ Reference: https://cp-algorithms.com/num_methods/binary_search.html
 
 https://leetcode.com/problems/search-in-rotated-sorted-array/
 
-[src code](../../cses/src/leetcode/FindInRotatedSorted.java)
+[src code](../../code/src/leetcode/FindInRotatedSorted.java)
 
 ---
 

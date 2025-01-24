@@ -256,7 +256,7 @@ The ugly:
 
 ## Priority Queue
 
-[src code](../../cses/src/collections/PriorityQueueExamples.java)
+[src code](../../code/src/collections/PriorityQueueExamples.java)
 
 ---
 
@@ -264,7 +264,7 @@ The ugly:
 
 https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/description/
 
-[src code](../../cses/src/leetcode/SortedArrayToBST.java)
+[src code](../../code/src/leetcode/SortedArrayToBST.java)
 
 ![explanation](../images/leetcode-0108.svg)
 
@@ -274,7 +274,7 @@ https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/descrip
 
 https://leetcode.com/problems/unique-binary-search-trees/description/
 
-[src code](../../cses/src/leetcode/UniqueBST.java)
+[src code](../../code/src/leetcode/UniqueBST.java)
 
 ![explanation](../images/leetcode-0096.svg)
 

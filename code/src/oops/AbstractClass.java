@@ -1,3 +1,5 @@
+package oops;
+
 public class AbstractClass {
     abstract class Animal {
         abstract void eat();

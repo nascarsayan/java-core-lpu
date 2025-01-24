@@ -7,7 +7,7 @@ public class DequeOperations {
     public static void main(String[] args) {
         // 1. Creating Deques
         Deque<Integer> arrayDeque = new ArrayDeque<>();    // Preferred implementation
-        Deque<Integer> ll = new LinkedList<Integer>();   // LinkedList implementation
+        Deque<Integer> ll = new LinkedList<Integer>();   // collections.LinkedList implementation
 
         Queue<Integer> priorityQueue = new PriorityQueue<Integer>();
 

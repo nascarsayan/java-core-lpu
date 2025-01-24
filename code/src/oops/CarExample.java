@@ -1,3 +1,5 @@
+package oops;
+
 class Car {
     enum Color {
         Red,
@@ -23,7 +25,7 @@ public class CarExample {
     static int stat;
     int nonStat;
 
-//    CarExample() {
+//    oops.CarExample() {
 //
 //    }
 
@@ -57,7 +59,7 @@ public class CarExample {
 
         var lambo = new Car("Lambo", Car.Color.Red, 6);
         System.out.println(Car.wheelCount);
-//        Car.wheelCount = 10;
+//        oops.Car.wheelCount = 10;
 
         var obj = new CarExample();
         var x = obj.nonStat;

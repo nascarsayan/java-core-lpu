@@ -226,7 +226,7 @@ To get samples of the config files / starter project:
 1. visit https://start.spring.io/
 2. make the selection and click on generate.
     
-    <img src="./spring_init.jpg" alt="spring_init" width="400"/>
+    <img src="../images/spring_init.jpg" alt="spring_init" width="400"/>
 
 ---
 zoom: 0.65
