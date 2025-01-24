@@ -124,3 +124,12 @@ https://leetcode.com/problems/trapping-rain-water-ii/description/
 
 ---
 
+## Eventual Safe States
+
+https://leetcode.com/problems/find-eventual-safe-states/description/
+
+[src code](../../code/src/leetcode/daily/EventualSafe.java)
+
+![explanation](../images/eventualSafe.svg)
+
+---
