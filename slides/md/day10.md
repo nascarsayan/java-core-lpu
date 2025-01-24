@@ -105,3 +105,22 @@ Today's problem:
 https://leetcode.com/problems/find-eventual-safe-states/description/
 
 ---
+
+## Subarray with Sum K
+
+[src code](../../code/src/leetcode/SubarraySumK.java)
+
+![explanation](../images/subarraySumK.svg)
+
+---
+
+## Trapping Rain Water
+
+[src code](../../code/src/leetcode/RainwaterTrapping.java)
+
+Similar question, homework:
+
+https://leetcode.com/problems/trapping-rain-water-ii/description/
+
+---
+
