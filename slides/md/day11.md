@@ -88,6 +88,14 @@ layout: default
 
 ---
 
+## Leetcode Daily: [1462. Course Schedule IV](https://leetcode.com/problems/course-schedule-iv/description/?envType=daily-question&envId=2025-01-27)
+
+![explanation](../images/courseSchedule4.svg)
+
+[src code](../../code/src/leetcode/daily/CourseSchedule4.java)
+
+---
+
 ## What is Meet in the Middle?
 
 - **Meet in the Middle** is an algorithmic technique used to optimize problems by dividing them into two smaller subproblems.
