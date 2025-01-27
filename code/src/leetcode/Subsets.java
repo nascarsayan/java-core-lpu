@@ -3,6 +3,8 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
+// https://leetcode.com/problems/subsets/description
+
 public class Subsets {
     static class Solution {
         int[] nums;
