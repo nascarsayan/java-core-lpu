@@ -80,6 +80,14 @@ layout: default
 
 ---
 
+## [93. Restore IP Addresses](https://leetcode.com/problems/restore-ip-addresses/description/)
+
+![explanation](../images/ipAddresses.svg)
+
+[src code](../../code/src/leetcode/RestoreIPAddresses.java)
+
+---
+
 ## What is Meet in the Middle?
 
 - **Meet in the Middle** is an algorithmic technique used to optimize problems by dividing them into two smaller subproblems.
