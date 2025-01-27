@@ -109,3 +109,18 @@ layout: default
 1. **Divide and Conquer**: Split the problem into two smaller subproblems.
 2. **Independent Solving**: Solve each subproblem separately.
 3. **Combining Results**: Merge the results of the two subproblems to get the final solution.
+
+---
+
+### Tomorrow topics
+
+- Bitmasking
+- Meet in the middle
+
+<!-- LeetCode-style Question:
+Given an array of N integers and a target sum X, find if it's possible to select some integers from the array 
+that sum up to X. N can be up to 40, making regular dynamic programming solutions too slow. -->
+
+<!-- LeetCode-style Question:
+Given an array of integers nums with length up to 40, determine if it's possible to partition the array
+into two subsets such that the sums of elements in both subsets are equal. -->
