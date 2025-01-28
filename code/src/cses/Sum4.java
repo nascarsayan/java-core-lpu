@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
+// https://cses.fi/problemset/task/1642/
+
 class Sum4 {
    static class IdxPair {
        int idx1, idx2;

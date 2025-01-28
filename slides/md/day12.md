@@ -40,3 +40,11 @@ layout: default
 [src code](../../code/src/cses/Sum4.java)
 
 ---
+
+## [Meet in the middle](https://cses.fi/problemset/result/11889789/)
+
+![explanation](../images/subsetSum.svg)
+
+[src code](../../code/src/cses/MeetInTheMiddle.java)
+
+---
