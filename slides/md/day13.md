@@ -38,6 +38,14 @@ Learn Java Concepts and give quizzes: https://hyperskill.org/knowledge-map/73?tr
 
 ---
 
+## Stateful vs Stateless
+
+[LLM conversation](../llm-outputs/Statefulness.md)
+
+![Statefulness](../images/statefulness.svg)
+
+---
+
 ## SRS (Software Requirements Specification)
 
 - **Title:** Minesweeper Game
