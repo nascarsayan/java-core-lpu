@@ -117,8 +117,6 @@ What?
 
 Pros:
 - You always have semi-working software. You always have a UI to show the boss or an API the other team can start testing against. It may not be functionally complete yet, but partial is better than nothing!
-- 
-
 
 ---
 
@@ -242,3 +240,51 @@ abstract class Cell {
 ## Now do the actual implementation of the game
 
 ---
+
+## Stateful vs Stateless
+
+[LLM conversation](../llm-outputs/Statefulness.md)
+
+![explanation](../images/statefulness.svg)
+
+---
+
+## HTTP requests using .http file
+
+- Save the sample requests with payloads in a file with `.http` extension.
+- You can save the body of the request in the same file or in external files.
+- In VSCode, you can use REST Client extension to send HTTP requests.
+- In Jetbrains IDEs, you can use the built-in HTTP client to send requests.
+
+[Sample file](../../code/src/http/requests.http)
+
+---
+
+## Other types besides REST
+
+| Name       | Category | Description |
+|------------|----------|-------------|
+| **REST (Representational State Transfer)** | **Architectural Style** | Uses HTTP and stateless communication with resources represented as URLs. |
+| **GraphQL** | **Query Language for APIs** | Allows clients to specify exactly what data they need, reducing over-fetching. |
+| **gRPC (gRPC Remote Procedure Call)** | **RPC (Remote Procedure Call) Framework** | Uses HTTP/2 and Protobuf for high-performance, low-latency communication. |
+| **SOAP (Simple Object Access Protocol)** | **Protocol** | Uses XML-based messaging over HTTP/SMTP for web services. |
+| **WebSockets** | **Full-Duplex Communication Protocol** | Enables real-time, bidirectional communication between client and server. |
+| **Webhooks** | **Event-Driven Communication** | Sends real-time notifications from one system to another via HTTP POST. |
+
+[reference](../llm-outputs/RESTetAll.md)
+
+---
+
+## Pocketbase
+
+[Pocketbase](https://pocketbase.io/) is written in go, and it uses SQLite for backend. It's extremely easy to set up.
+
+You can use Pocketbase for setting up your backend quickly. It's no-code solution if you want to:
+- Just expose a database as an API.
+- Want authentication and authorization built-in, with OAuth, email, OTP, etc.
+- If you want to run backend efficiently, using very less memory and CPU.
+- If you want to have your own hosted backend, don't want to rely on third-party services for your backend.
+- If you want to migrate data frm one server to another easily.
+
+---
+

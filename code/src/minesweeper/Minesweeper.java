@@ -20,7 +20,7 @@ abstract class Game {
     protected long startTime;
 
     public Game(int rows, int cols, int mines) {
-        
+
     }
 
     public abstract void revealCell(int row, int col);

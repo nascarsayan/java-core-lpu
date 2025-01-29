@@ -1,0 +1,47 @@
+### Get all posts
+GET https://jsonplaceholder.typicode.com/posts
+
+### Get a single post by ID
+GET https://jsonplaceholder.typicode.com/posts/1
+
+# In VSCode, we set variables on the name of the request, and reference the request / response usinbg that name.
+
+# ### Create a new post
+# # @name newPost
+# POST https://jsonplaceholder.typicode.com/posts
+# Content-Type: application/json
+
+# < ./payload.json
+
+# In Jetbrains, we need to set the variables using client.<scope>.set.
+
+### Create a new post
+# @name newPost
+POST https://jsonplaceholder.typicode.com/posts
+Content-Type: application/json
+
+> {%
+client.global.set("newPostId", response.body.id)
+ %}
+
+
+### Update an existing post (full update)
+PUT https://jsonplaceholder.typicode.com/posts/1
+Content-Type: application/json
+
+{
+  "title": "updated foo",
+  "body": "updated bar with {{newPost.response.body.id}}",
+  "userId": 1
+}
+
+### Partially update an existing post
+PATCH https://jsonplaceholder.typicode.com/posts/1
+Content-Type: application/json
+
+{
+  "title": "patched foo"
+}
+
+### Delete a post
+DELETE https://jsonplaceholder.typicode.com/posts/1
