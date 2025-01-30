@@ -32,7 +32,6 @@ layout: default
 - SOLID Principles
 - Composition Over Inheritance
 
-
 ---
 
 ### **1. Foundational Concepts of OOP**
@@ -702,90 +701,109 @@ Composition Over Inheritance is a fundamental design principle in object-oriente
 
 2. Real-World Examples:
 
-Example 1: Vehicle System
-- Inheritance Approach:
-  ```python
-  class Vehicle:
-      def move(self): pass
-  
-  class Car(Vehicle):
-      def move(self):
-          # Car-specific movement logic
-          pass
-  ```
+    Example 1: Vehicle System
+    - Inheritance Approach:
+      ```java
+      abstract class Vehicle {
+          public abstract void move();
+      }
 
-- Composition Approach:
-  ```python
-  class Engine:
-      def run(self): pass
-  
-  class Car:
-      def __init__(self):
-          self.engine = Engine()
-      
-      def move(self):
-          self.engine.run()
-  ```
+      class Car extends Vehicle {
+          @Override
+          public void move() {
+              // Car-specific movement logic
+          }
+      }
+      ```
 
-Real-Life Analogy: Think about building a car
-- Inheritance would be like saying "a car is a type of vehicle"
-- Composition is like saying "a car has an engine, has wheels, has seats"
+    - Composition Approach:
+      ```java
+      class Engine {
+          public void run() {
+              // Engine running logic
+          }
+      }
 
-Example 2: Computer Assembly
-- Instead of inheriting from a "Computer" class, a laptop is composed of:
-  - CPU
-  - RAM
-  - Storage
-  - Display
-  - Keyboard
+      class Car {
+          private Engine engine;
+          
+          public Car() {
+              this.engine = new Engine();
+          }
+          
+          public void move() {
+              engine.run();
+          }
+      }
+      ```
+
+    Real-Life Analogy: Think about building a car
+    - Inheritance would be like saying "a car is a type of vehicle"
+    - Composition is like saying "a car has an engine, has wheels, has seats"
+
+    Example 2: Computer Assembly
+    - Instead of inheriting from a "Computer" class, a laptop is composed of:
+      - CPU
+      - RAM
+      - Storage
+      - Display
+      - Keyboard
 
 3. Advantages of Composition:
 
-a) Flexibility
-- Easy to change parts without affecting the whole system
-- Can swap implementations at runtime
-- Less rigid than inheritance hierarchies
+    a) Flexibility
+    - Easy to change parts without affecting the whole system
+    - Can swap implementations at runtime
+    - Less rigid than inheritance hierarchies
 
-b) Better Encapsulation
-- Internal details can be hidden
-- Changes to composed objects don't necessarily affect the containing object
+    b) Better Encapsulation
+    - Internal details can be hidden
+    - Changes to composed objects don't necessarily affect the containing object
 
-c) Looser Coupling
-- Components can be developed independently
-- Easier to test and maintain
+    c) Looser Coupling
+    - Components can be developed independently
+    - Easier to test and maintain
 
 4. When to Use Each:
 
-Use Inheritance When:
-- There's a true "is-a" relationship
-- You want to share code among several related classes
-- The parent class is designed for extension
+    Use Inheritance When:
+    - There's a true "is-a" relationship
+    - You want to share code among several related classes
+    - The parent class is designed for extension
 
-Use Composition When:
-- You need more flexibility
-- You want to reuse code across unrelated classes
-- The relationship between classes might change
-- You need to change behavior at runtime
+    Use Composition When:
+    - You need more flexibility
+    - You want to reuse code across unrelated classes
+    - The relationship between classes might change
+    - You need to change behavior at runtime
 
 5. Practical Example:
-```python
-# Composition example for a music player
+    ```java
+    // Composition example for a music player
 
-class AudioPlayer:
-    def __init__(self):
-        self.equalizer = Equalizer()
-        self.display = Display()
-        self.storage = Storage()
-    
-    def play_music(self):
-        audio = self.storage.get_audio()
-        processed_audio = self.equalizer.process(audio)
-        self.display.show_playing(audio.metadata)
-```
+    // AudioPlayer class to manage playing music
+    class AudioPlayer {
+        private Equalizer equalizer;
+        private Display display;
+        private Storage storage;
 
-This is more flexible than inheriting from a generic "MediaPlayer" class because:
-- You can easily swap out the equalizer implementation
-- The display can be changed without affecting other components
-- Storage can be changed from local to cloud without changing the AudioPlayer class
+        public AudioPlayer() {
+            this.equalizer = new Equalizer();
+            this.display = new Display();
+            this.storage = new Storage();
+        }
 
-Remember: "Favor composition over inheritance" doesn't mean "never use inheritance." It means composition should be your first choice, and inheritance should be used when it makes the most sense for your specific use case.
+        public void playMusic() {
+            Audio audio = storage.getAudio();
+            String processedAudio = equalizer.process(audio);
+            display.showPlaying(audio.getMetadata());
+        }
+    }
+    ```
+
+    This is more flexible than inheriting from a generic "MediaPlayer" class because:
+    - You can easily swap out the equalizer implementation
+    - The display can be changed without affecting other components
+    - Storage can be changed from local to cloud without changing the AudioPlayer class
+
+    Remember: "Favor composition over inheritance" doesn't mean "never use inheritance." It means composition should be your first choice, and inheritance should be used when it makes the most sense for your specific use case.
