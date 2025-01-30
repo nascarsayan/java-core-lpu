@@ -807,3 +807,85 @@ Composition Over Inheritance is a fundamental design principle in object-oriente
     - Storage can be changed from local to cloud without changing the AudioPlayer class
 
     Remember: "Favor composition over inheritance" doesn't mean "never use inheritance." It means composition should be your first choice, and inheritance should be used when it makes the most sense for your specific use case.
+
+---
+
+## ER Diagram
+
+- Entity : The encapsulation of the data, consisting of multiple attributes.
+- Relationship: The connections between the entities, defining how they interact.
+
+Implementaion:
+
+1. Entity:
+    - The entity has a bunch of attributes. Each attribute represents a column in the database table.
+    - We can have multiple instances of an entity, each instance represents a row in the database table.
+
+    User entity:
+
+    | Attribute      | Data Type | Description                |
+    |----------------|-----------|----------------------------|
+    | user_id        | INT       | Unique identifier for user |
+    | name           | VARCHAR   | User's name                |
+    | email          | VARCHAR   | User's email address       |
+    | last_login     | TIMESTAMP | Last login timestamp       |
+
+    | User_id | Email           | Last_login          | Name  |
+    |---------|-----------------|-----------------------|-------|
+    | 1       | john@example.com | 2022-01-01 12:00:00 | John Smith |
+    | 2       | jack@hello.com | 2022-01-02 10:00:00 | Jack Reacher |
+
+    Post entity:
+
+    | Attribute      | Data Type | Description                |
+    |----------------|-----------|----------------------------|
+    | id        | INT       | Unique identifier for post |
+    | title          | VARCHAR   | Title of the post          |
+    | content        | TEXT      | Content of the post        |
+    | created_at     | TIMESTAMP | Timestamp when the post was created |
+
+    | id | Title           | Content          | Created_at          |
+    |---------|-----------------|------------------|---------------------|
+    | 1      | First Post      | This is my first post | 2022-01-01 12:00:00 |
+    | 2       | Hello World     | Hello, this is Jack | 2022-01-02 10:00:00 |
+
+2. Relation
+
+    - The relationship between entities is defined by the foreign key constraint.
+    - The foreign key in one entity refers to the primary key in another entity.
+
+    User-Post relationship:
+
+    | User_id | Post_id |
+    |---------|---------|
+    | 1       | 1       |
+    | 1       | 2       |
+    | 2       | 3       |
+
+    In this example, the User-Post relationship table connects the User entity with the Post entity. Each row represents a relationship between a user and a post.
+
+    This is must in a many to many relationship. Because there is no way we can store the relationship in the entities themselves. (If we can't use arrays).
+
+    But in case of 1-many or 1-1 relationship, it's possible to store the relationship in the entities themselves. We store the foreign key in the entity which is on the many side.
+
+    ```mermaid
+    erDiagram
+        USER {
+            int id
+            string name
+            string email
+        }
+        POST {
+            int id
+            string title
+            string content
+            int user_id
+        }
+        USER ||--o{ POST : writes
+    ```
+
+---
+
+## SQL
+
+[sql console](../../code/src/sql/console.sql)
