@@ -574,3 +574,219 @@ Great question! **SOLID principles** are not necessarily enforced from day 1, an
 
 This approach ensures that SOLID principles are applied **when they provide the most value**, rather than forcing them prematurely. Let me know if you'd like to dive deeper into any specific principle or refactoring technique!
 
+---
+
+## Class Relationship Types
+
+[reference](../llm-outputs/OOPs/ClassRelationships.md)
+
+```mermaid
+classDiagram
+    %% Inheritance Example
+    class Animal {
+        +makeSound()
+        +move()
+    }
+    class Dog {
+        +makeSound()
+        +move()
+        +wagTail()
+    }
+    Animal <|-- Dog : is a (inherits)
+    
+    %% Composition Example
+    class Car {
+        -engine: Engine
+        +start()
+        +stop()
+    }
+    class Engine {
+        -cylinders: int
+        +turnOn()
+        +turnOff()
+    }
+    Car *-- Engine : has a (owns)
+    
+    %% Aggregation Example
+    class University {
+        -name: String
+        +addDepartment()
+    }
+    class Department {
+        -name: String
+        +addProfessor()
+    }
+    University o-- Department : has a (contains)
+    
+    %% Association Example
+    class Student {
+        -name: String
+        +enroll()
+    }
+    class Course {
+        -title: String
+        +addStudent()
+    }
+    Student --> Course : uses (independent)
+    
+    %% Implementation/Realization Example
+    class Playable {
+        <<interface>>
+        +play()
+        +pause()
+    }
+    class MusicPlayer {
+        +play()
+        +pause()
+        +addSong()
+    }
+    Playable <|.. MusicPlayer : implements (contracts)
+    
+    %% Dependency Example
+    class Order {
+        +checkout()
+    }
+    class PaymentProcessor {
+        +process()
+    }
+    Order ..> PaymentProcessor : uses (temporary)
+
+```
+
+
+---
+
+## Composition Over Inheritance
+
+I'll explain Composition Over Inheritance using both programming and real-world examples, and create a diagram to illustrate the concepts.
+
+
+```mermaid
+classDiagram
+    class Vehicle {
+        +start()
+        +stop()
+    }
+    class Engine {
+        +start()
+        +stop()
+        +injectFuel()
+    }
+    class Car {
+        -engine
+        +start()
+        +stop()
+    }
+    class ElectricCar {
+        -motor
+        +start()
+        +stop()
+    }
+    class Motor {
+        +start()
+        +stop()
+        +consumePower()
+    }
+
+    Vehicle <|-- Car : Inheritance
+    Vehicle <|-- ElectricCar : Inheritance
+    Car o-- Engine : Composition
+    ElectricCar o-- Motor : Composition
+
+```
+
+Composition Over Inheritance is a fundamental design principle in object-oriented programming that suggests you should favor composing objects together rather than using inheritance hierarchies. Let me break this down:
+
+1. The Core Concept:
+- Instead of inheriting behaviors from parent classes, objects should contain instances of other classes that provide the desired functionality
+- This creates a "has-a" relationship rather than an "is-a" relationship
+
+2. Real-World Examples:
+
+Example 1: Vehicle System
+- Inheritance Approach:
+  ```python
+  class Vehicle:
+      def move(self): pass
+  
+  class Car(Vehicle):
+      def move(self):
+          # Car-specific movement logic
+          pass
+  ```
+
+- Composition Approach:
+  ```python
+  class Engine:
+      def run(self): pass
+  
+  class Car:
+      def __init__(self):
+          self.engine = Engine()
+      
+      def move(self):
+          self.engine.run()
+  ```
+
+Real-Life Analogy: Think about building a car
+- Inheritance would be like saying "a car is a type of vehicle"
+- Composition is like saying "a car has an engine, has wheels, has seats"
+
+Example 2: Computer Assembly
+- Instead of inheriting from a "Computer" class, a laptop is composed of:
+  - CPU
+  - RAM
+  - Storage
+  - Display
+  - Keyboard
+
+3. Advantages of Composition:
+
+a) Flexibility
+- Easy to change parts without affecting the whole system
+- Can swap implementations at runtime
+- Less rigid than inheritance hierarchies
+
+b) Better Encapsulation
+- Internal details can be hidden
+- Changes to composed objects don't necessarily affect the containing object
+
+c) Looser Coupling
+- Components can be developed independently
+- Easier to test and maintain
+
+4. When to Use Each:
+
+Use Inheritance When:
+- There's a true "is-a" relationship
+- You want to share code among several related classes
+- The parent class is designed for extension
+
+Use Composition When:
+- You need more flexibility
+- You want to reuse code across unrelated classes
+- The relationship between classes might change
+- You need to change behavior at runtime
+
+5. Practical Example:
+```python
+# Composition example for a music player
+
+class AudioPlayer:
+    def __init__(self):
+        self.equalizer = Equalizer()
+        self.display = Display()
+        self.storage = Storage()
+    
+    def play_music(self):
+        audio = self.storage.get_audio()
+        processed_audio = self.equalizer.process(audio)
+        self.display.show_playing(audio.metadata)
+```
+
+This is more flexible than inheriting from a generic "MediaPlayer" class because:
+- You can easily swap out the equalizer implementation
+- The display can be changed without affecting other components
+- Storage can be changed from local to cloud without changing the AudioPlayer class
+
+Remember: "Favor composition over inheritance" doesn't mean "never use inheritance." It means composition should be your first choice, and inheritance should be used when it makes the most sense for your specific use case.
