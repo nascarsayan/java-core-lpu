@@ -29,6 +29,8 @@ layout: default
 ## Agenda
 
 - Setup your IDE (Jetbrains) to run SQL queries locally (on SQLite).
+  + [Jetbrains DataGrip](https://www.jetbrains.com/datagrip/)
+  + [IntelliJ IDEA Ultimate](https://www.jetbrains.com/idea/download/)
 - Run the scripts under the [seed](../../code/src/sql/seed/) folder to setup the tables and the data locally.
 - Practice SQL queries on [SQL Exercises](https://www.sql-ex.ru/).
 
