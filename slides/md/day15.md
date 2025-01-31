@@ -36,3 +36,60 @@ layout: default
 
 ---
 
+## Ships Database
+
+```mermaid
+erDiagram
+    Product {
+        string maker
+        string type
+        string model
+    }
+    PC {
+        string model
+        int speed
+        int ram
+        float hd
+        string cd
+        float price
+        int code
+    }
+    Printer {
+        string model
+        string color
+        string type
+        float price
+        int code
+    }
+    Laptop {
+        string model
+        int speed
+        int ram
+        float hd
+        float price
+        int screen
+        int code
+    }
+    
+    Product ||--o{ PC : "model"
+    Product ||--o{ Printer : "model"
+    Product ||--o{ Laptop : "model"
+```
+
+---
+
+## How to build the query
+
+1. We need all the info first.
+  - We do `select *` from multiple tables.
+  - We join the tables as needed.
+2. We filter the data.
+  - We use `where` clause to filter the data.
+3. We project the data.
+  - We use `select` clause to project the data.
+
+---
+
+[SQL-ex.ru Solutions](../../code/src/sql/sql-ex-soluntions.sql)
+
+---
