@@ -31,50 +31,8 @@ layout: default
 - Setup your IDE (Jetbrains) to run SQL queries locally (on SQLite).
   + [Jetbrains DataGrip](https://www.jetbrains.com/datagrip/)
   + [IntelliJ IDEA Ultimate](https://www.jetbrains.com/idea/download/)
-- Run the scripts under the [seed](../../code/src/sql/seed/) folder to setup the tables and the data locally.
+- Run the scripts under the [seed](../../code/src/sqlexru/seed/) folder to setup the tables and the data locally.
 - Practice SQL queries on [SQL Exercises](https://www.sql-ex.ru/).
-
----
-
-## Ships Database
-
-```mermaid
-erDiagram
-    Product {
-        string maker
-        string type
-        string model
-    }
-    PC {
-        string model
-        int speed
-        int ram
-        float hd
-        string cd
-        float price
-        int code
-    }
-    Printer {
-        string model
-        string color
-        string type
-        float price
-        int code
-    }
-    Laptop {
-        string model
-        int speed
-        int ram
-        float hd
-        float price
-        int screen
-        int code
-    }
-    
-    Product ||--o{ PC : "model"
-    Product ||--o{ Printer : "model"
-    Product ||--o{ Laptop : "model"
-```
 
 ---
 
