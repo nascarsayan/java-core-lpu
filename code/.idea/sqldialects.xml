@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
-    <file url="file://$PROJECT_DIR$/src/sql/seed/aero.sql" dialect="SQLite" />
-    <file url="file://$PROJECT_DIR$/src/sql/seed/computer.sql" dialect="SQLite" />
-    <file url="file://$PROJECT_DIR$/src/sql/seed/inc_out.sql" dialect="SQLite" />
-    <file url="file://$PROJECT_DIR$/src/sql/seed/painting.sql" dialect="SQLite" />
-    <file url="file://$PROJECT_DIR$/src/sql/seed/sample.sql" dialect="SQLite" />
-    <file url="file://$PROJECT_DIR$/src/sql/seed/ships.sql" dialect="SQLite" />
-    <file url="file://$PROJECT_DIR$/src/sql/sql-ex-soluntions.sql" dialect="SQLite" />
+    <file url="file://$PROJECT_DIR$/src/sqlexru/console.sql" dialect="SQLite" />
     <file url="PROJECT" dialect="SQLite" />
   </component>
 </project>

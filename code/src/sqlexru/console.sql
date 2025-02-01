@@ -47,3 +47,23 @@ from Post as P
 where id == 1)
 select User.name, posts.naam as postName from posts, User
 where posts.user_id == User.id;
+
+----
+
+-- -- For each ship that participated in the Battle of Guadalcanal, get its name, displacement, and the number of guns.
+-- -- 46
+--
+-- select
+-- O.ship,
+-- coalesce(C.displacement, C2.displacement) as displacement,
+-- coalesce(C.numGuns, C2.numGuns) as numGuns
+-- from Outcomes O
+-- left join Ships S on O.ship = S.name
+-- left join Classes C on S.class = C.class
+-- left join Classes C2 on O.ship = C2.class
+-- where O.battle = 'Guadalcanal';
+--
+-- ---
+--
+-- -- Find the countries that have lost all their ships in battles.
+--
