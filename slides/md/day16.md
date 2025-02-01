@@ -41,3 +41,13 @@ Opinionated SQL information:
 Reference: https://chatgpt.com/share/679d9c77-02e0-8009-a84c-b1e8521c76e6
 
 ---
+
+## Index
+
+Index allows us to access the pointer to those memory or disk locations which staisfy some parameter.
+The parameter can be :
+- integer
+- string
+- anything else which can be hashed.
+
+In database terms, indexing can be applied to one or more columns of a table to quickly access the rows based on the values in those columns.

@@ -83,7 +83,7 @@ SELECT * FROM EmployeeNames;
 
 --
 
--- Recu
+-- Recursive CTE
 WITH RECURSIVE EmployeeHierarchy AS (
     SELECT id, name, manager_id, 0 AS level FROM employees WHERE name = 'Alice'
     UNION ALL
@@ -94,3 +94,27 @@ WITH RECURSIVE EmployeeHierarchy AS (
 SELECT * FROM EmployeeHierarchy;
 
 ---
+
+-- INDEX
+
+CREATE TABLE customers
+(
+   id INTEGER PRIMARY KEY,
+   name TEXT NOT NULL,
+   email TEXT UNIQUE NOT NULL,
+   city TEXT,
+   age INTEGER
+);
+
+INSERT INTO customers (name, email, city, age) VALUES
+                                                   ('Alice', 'alice@example.com', 'New York', 25),
+                                                   ('Bob', 'bob@example.com', 'Los Angeles', 30),
+                                                   ('Charlie', 'charlie@example.com', 'Chicago', 35),
+                                                   ('David', 'david@example.com', 'New York', 40),
+                                                   ('Eve', 'eve@example.com', 'Los Angeles', 45);
+
+CREATE INDEX idx_customers_city ON customers(city);
+
+SELECT * FROM customers WHERE city = 'New York';
+
+EXPLAIN QUERY PLAN SELECT * FROM customers WHERE city = 'New York';
