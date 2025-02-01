@@ -1,69 +1,96 @@
--- Idempotent Script (you can run it multiple times without facing error).
+drop table if exists users;
+drop table if exists articles;
 
--- Data Definition Language
-
-create table if not exists User
+create table users
 (
-    id       integer not null
-        constraint User_pk
-            primary key autoincrement,
-    name     TEXT    not null,
-    username TEXT    not null
-        constraint username_unique
-            unique
+    id       INTEGER PRIMARY KEY,
+    name     TEXT NOT NULL,
+    metadata JSON
 );
 
-UPDATE User SET name = 'John Doe', username = 'john' WHERE id = 1;
-UPDATE User SET name = 'John Doe', username = 'john2' WHERE id = 2;
+INSERT INTO users (name, metadata)
+VALUES ('Alice', '{
+  "age": 25,
+  "city": "New York",
+  "skills": [
+    "SQL",
+    "Python"
+  ],
+  "movies": ["Catch me if you can", "After Sunset"]
+}'),
+       ('Bob', '{
+         "age": 30,
+         "city": "San Francisco",
+         "skills": [
+           "Java",
+           "C++"
+         ],
+         "movies": ["Dark Knight", "Memento"]
+       }');
 
-create table if not exists Post
+SELECT id, name, json_extract(metadata, '$.city') AS city FROM users;
+
+SELECT * FROM users WHERE json_extract(metadata, '$.age') > 27;
+
+SELECT name, v1.value, v2.value AS skill
+FROM users, json_each(metadata, '$.skills') as v1, json_each(metadata, '$.movies') as v2;
+
+
+UPDATE users
+SET metadata = json_set(metadata, '$.city', 'Los Angeles')
+WHERE name = 'Alice';
+
+--
+
+-- Virtual Tables
+
+CREATE VIRTUAL TABLE articles USING fts5(title, content);
+
+INSERT INTO articles (title, content) VALUES
+                                          ('SQLite Basics', 'SQLite is a lightweight database engine.'),
+                                          ('Full-Text Search in SQLite', 'FTS5 enables fast text searching in large documents.'),
+                                          ('Advanced SQLite Features', 'SQLite supports JSON, indexing, and virtual tables.');
+
+SELECT * FROM articles WHERE articles MATCH '"Full-Text Search"';
+
+SELECT * FROM articles WHERE articles MATCH 'light*';
+
+-- LIKE, GLOB, and REGEXP Do Not Work in FTS5
+-- SELECT * FROM articles WHERE articles REGEXP '^light.*';
+
+
+CREATE TABLE employees
 (
-    id      integer not null
-        constraint Post_pk
-            primary key autoincrement,
-    title   TEXT    not null,
-    content TEXT    not null,
-    user_id integer not null
-        constraint Post_User_id_fk
-            references User
+    id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL,
+    manager_id INTEGER REFERENCES employees(id)
 );
 
--- DELETE from Post;
+INSERT INTO employees (id, name, manager_id) VALUES
+                                                 (1, 'Alice', NULL),
+                                                 (2, 'Bob', 1),
+                                                 (3, 'Charlie', 1),
+                                                 (4, 'David', 2),
+                                                 (5, 'Eve', 2),
+                                                 (6, 'Frank', 3);
+
+-- CTE: Common Table expression
+
+WITH EmployeeNames AS (
+    SELECT id, name FROM employees WHERE manager_id IS NULL
+)
+SELECT * FROM EmployeeNames;
+
 --
--- INSERT INTO Post (id, title, content, user_id) VALUES (1, 'Post1', 'Foo', 1);
--- INSERT INTO Post (id, title, content, user_id) VALUES (2, 'Post2', 'Foo', 2);
 
-UPDATE Post SET title = 'Post1', content = 'Foo', user_id = 1 WHERE id = 1;
-UPDATE Post SET title = 'Post2', content = 'Foo', user_id = 2 WHERE id = 2;
+-- Recu
+WITH RECURSIVE EmployeeHierarchy AS (
+    SELECT id, name, manager_id, 0 AS level FROM employees WHERE name = 'Alice'
+    UNION ALL
+    SELECT e.id, e.name, e.manager_id, eh.level + 1
+    FROM employees e
+             JOIN EmployeeHierarchy eh ON e.manager_id = eh.id
+)
+SELECT * FROM EmployeeHierarchy;
 
-
--- Data Query Language
-
-with posts as (
-select P.id    as post_id,
-       P.title as naam,
-       P.user_id
-from Post as P
-where id == 1)
-select User.name, posts.naam as postName from posts, User
-where posts.user_id == User.id;
-
-----
-
--- -- For each ship that participated in the Battle of Guadalcanal, get its name, displacement, and the number of guns.
--- -- 46
---
--- select
--- O.ship,
--- coalesce(C.displacement, C2.displacement) as displacement,
--- coalesce(C.numGuns, C2.numGuns) as numGuns
--- from Outcomes O
--- left join Ships S on O.ship = S.name
--- left join Classes C on S.class = C.class
--- left join Classes C2 on O.ship = C2.class
--- where O.battle = 'Guadalcanal';
---
--- ---
---
--- -- Find the countries that have lost all their ships in battles.
---
+---
