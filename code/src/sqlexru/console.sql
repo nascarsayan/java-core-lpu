@@ -46,10 +46,11 @@ WHERE name = 'Alice';
 
 CREATE VIRTUAL TABLE articles USING fts5(title, content);
 
-INSERT INTO articles (title, content) VALUES
-                                          ('SQLite Basics', 'SQLite is a lightweight database engine.'),
-                                          ('Full-Text Search in SQLite', 'FTS5 enables fast text searching in large documents.'),
-                                          ('Advanced SQLite Features', 'SQLite supports JSON, indexing, and virtual tables.');
+INSERT INTO articles (title, content)
+VALUES ('SQLite Basics', 'SQLite is a lightweight database engine.'),
+       ('Full-Text Search in SQLite', 'FTS5 enables fast text searching in large documents.'),
+       ('Advanced SQLite Features', 'SQLite supports JSON, indexing, and virtual tables.');
+
 
 SELECT * FROM articles WHERE articles MATCH '"Full-Text Search"';
 
@@ -58,7 +59,7 @@ SELECT * FROM articles WHERE articles MATCH 'light*';
 -- LIKE, GLOB, and REGEXP Do Not Work in FTS5
 -- SELECT * FROM articles WHERE articles REGEXP '^light.*';
 
-
+drop table if exists employees;
 CREATE TABLE employees
 (
     id INTEGER PRIMARY KEY,
@@ -66,13 +67,14 @@ CREATE TABLE employees
     manager_id INTEGER REFERENCES employees(id)
 );
 
-INSERT INTO employees (id, name, manager_id) VALUES
-                                                 (1, 'Alice', NULL),
-                                                 (2, 'Bob', 1),
-                                                 (3, 'Charlie', 1),
-                                                 (4, 'David', 2),
-                                                 (5, 'Eve', 2),
-                                                 (6, 'Frank', 3);
+INSERT INTO employees (id, name, manager_id)
+VALUES (1, 'Alice', NULL),
+       (2, 'Bob', 1),
+       (3, 'Charlie', 1),
+       (4, 'David', 2),
+       (5, 'Eve', 2),
+       (6, 'Frank', 3);
+
 
 -- CTE: Common Table expression
 
@@ -97,6 +99,7 @@ SELECT * FROM EmployeeHierarchy;
 
 -- INDEX
 
+drop table if exists customers;
 CREATE TABLE customers
 (
    id INTEGER PRIMARY KEY,
@@ -106,15 +109,32 @@ CREATE TABLE customers
    age INTEGER
 );
 
-INSERT INTO customers (name, email, city, age) VALUES
-                                                   ('Alice', 'alice@example.com', 'New York', 25),
-                                                   ('Bob', 'bob@example.com', 'Los Angeles', 30),
-                                                   ('Charlie', 'charlie@example.com', 'Chicago', 35),
-                                                   ('David', 'david@example.com', 'New York', 40),
-                                                   ('Eve', 'eve@example.com', 'Los Angeles', 45);
+INSERT INTO customers
+    (name, email, city, age)
+VALUES ('Alice', 'alice@example.com', 'New York', 25),
+       ('Bob', 'bob@example.com', 'Los Angeles', 30),
+       ('Charlie', 'charlie@example.com', 'Chicago', 35),
+       ('David', 'david@example.com', 'New York', 40),
+       ('Eve', 'eve@example.com', 'Los Angeles', 45);
+
 
 CREATE INDEX idx_customers_city ON customers(city);
 
 SELECT * FROM customers WHERE city = 'New York';
 
 EXPLAIN QUERY PLAN SELECT * FROM customers WHERE city = 'New York';
+
+drop table if exists orders;
+CREATE TABLE orders
+(
+    id          INTEGER PRIMARY KEY,
+    price       INTEGER NOT NULL,
+    quantity    INTEGER NOT NULL,
+    total_price INTEGER GENERATED ALWAYS AS (price * quantity) VIRTUAL
+);
+
+-- Stored or Virtual: Virtual means data is computed during SELECT.
+
+INSERT INTO orders (price, quantity) VALUES (100, 5);
+
+SELECT * FROM orders;

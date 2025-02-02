@@ -51,3 +51,15 @@ The parameter can be :
 - anything else which can be hashed.
 
 In database terms, indexing can be applied to one or more columns of a table to quickly access the rows based on the values in those columns.
+
+---
+
+## Custom Functions in SQLite
+
+We can create functions in other languages like C, C++, Python, etc. and register them in SQLite.
+
+Example:
+
+[sqlite_custom_func.py](../../code/src/sqlexru/sqlite_custom_func.py)
+
+---

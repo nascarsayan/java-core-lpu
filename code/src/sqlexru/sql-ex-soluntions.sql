@@ -126,3 +126,63 @@ where price = (
 PRAGMA journal_mode = WAL;
 
 PRAGMA journal_mode;
+
+---
+
+-- Triggers
+
+drop table if exists employees;
+drop table if exists salary_changes;
+drop table if exists employees_deleted;
+
+CREATE TABLE if not exists employees
+(
+    id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL,
+    salary INTEGER NOT NULL
+);
+
+CREATE TABLE if not exists salary_changes
+(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    employee_id INTEGER,
+    old_salary INTEGER,
+    new_salary INTEGER,
+    change_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (employee_id) REFERENCES employees(id)
+);
+
+
+CREATE TRIGGER trigger_salary_update
+    AFTER UPDATE ON employees
+    FOR EACH ROW
+    WHEN OLD.salary <> NEW.salary
+BEGIN
+    INSERT INTO salary_changes (employee_id, old_salary, new_salary)
+    VALUES (OLD.id, OLD.salary, NEW.salary);
+END;
+
+INSERT INTO employees (id, name, salary) VALUES (1, 'Alice', 5000);
+
+-- trigger_salary_update triggered on update (not insert)
+UPDATE employees SET salary = 7000 WHERE id = 1;
+
+SELECT * FROM salary_changes;
+
+CREATE TABLE if not exists employees_deleted
+(
+    id INTEGER PRIMARY KEY,
+    name TEXT,
+    salary INTEGER,
+    deleted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TRIGGER trigger_employee_delete
+    AFTER DELETE ON employees
+    FOR EACH ROW
+BEGIN
+    INSERT INTO employees_deleted (id, name, salary)
+    VALUES (OLD.id, OLD.name, OLD.salary);
+END;
+
+delete from employees where id = 1;
