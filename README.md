@@ -16,6 +16,12 @@ Learn Java Concepts and give quizzes: https://hyperskill.org/knowledge-map/73?tr
 
 Database reviews: https://www.cs.cmu.edu/~pavlo/blog/2025/01/2024-databases-retrospective.html
 
-Excellent SQLite course (paid): https://highperformancesqlite.com/watch/sqlites-structure
+Excellent SQLite course (freemium): https://highperformancesqlite.com/watch/sqlites-structure
 - Tip: You can get the video transcript for the locked videos, and ask LLM to explain the concepts / provide pointers for more resources.
+
+Parse, don't validate: https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/
+
+Hackernews (Some of these items are relevant):
+- https://news.ycombinator.com/
+- Search topics: https://hn.algolia.com/
 
