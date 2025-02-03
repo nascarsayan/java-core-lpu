@@ -204,3 +204,32 @@ You want to convert your JSON data to class object which can be processed by Jav
 ## Complete example
 
 [Serialization and Deserialization example](../../deserial/src/main/java/org/example/Main.java)
+
+---
+
+## Lombok
+
+- Lombok is a library that helps to reduce boilerplate code.
+- It provides annotations to generate getters, setters, constructors, etc.
+- To add Lombok to your project:
+  + Search for `Lombok` in Maven Central Repository. Open the link corresponding to `org.projectlombok:lombok`. Select the appropriate build tool, as per your project. Copy the code snippet to add the dependency to your project.
+  + Add the Lombok library to the `build.gradle.kts` file.
+    ```kotlin
+    dependencies {
+        compileOnly("org.projectlombok:lombok:1.18.36")
+        annotationProcessor("org.projectlombok:lombok:1.18.36")
+    }
+    ```
+  + Sync the Gradle project (to recompute and download the required dependencies).
+- To ensure that the parameter names in the functions are not lost during compilation, add the following to the `build.gradle.kts` file. [Reference](../llm-outputs/WhyUseCompilerOptionParams.md)
+  ```kotlin
+  tasks.withType<JavaCompile> {
+      options.compilerArgs.addAll(listOf("-parameters"))
+  }
+  ```
+- Remove the boilerplate code, and add the annotations.
+
+[Refactored Code](../../deserial/src/main/java/org/example/lombok/LombokUse.java)
+
+---
+
