@@ -1,19 +1,24 @@
 package org.example;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+// This is required to ignore someFieldNotPresentInClass key inside the json in deserialization.
+@JsonIgnoreProperties(ignoreUnknown = true)
 class Car {
-    String color;
+    String Color;
     String make;
 
+    public Car() {}
+
     Car(String color, String make) {
-        this.color = color;
+        this.Color = color;
         this.make = make;
     }
 
     public String getColor() {
-        return color;
+        return Color;
     }
 
     public String getMake() {
@@ -21,7 +26,7 @@ class Car {
     }
 
     public void setColor(String color) {
-        this.color = color;
+        this.Color = color;
     }
 
     public void setMake(String make) {
@@ -31,11 +36,28 @@ class Car {
 
 public class Main {
     public static void main(String[] args) throws JsonProcessingException {
+
+        // Serialization.
         var om = new ObjectMapper();
         Car car = new Car("Red", "Tesla");
         try {
-            var carJson = om.writeValueAsString(car);
+            String carJson = om.writeValueAsString(car);
             System.out.println(carJson);
+        } catch (Exception e) {
+            throw e;
+        }
+
+        // Deserialization.
+        String jsonData = """
+{
+    "make":"Tesla",
+    "color":"Blue",
+    "someFieldNotPresentInClass": "foobar"
+}
+""";
+        try {
+            var car2 = om.readValue(jsonData, Car.class);
+            System.out.printf("Car2 : (%s, %s)\n", car2.make, car2.Color);
         } catch (Exception e) {
             throw e;
         }
