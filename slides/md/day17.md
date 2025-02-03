@@ -233,3 +233,265 @@ You want to convert your JSON data to class object which can be processed by Jav
 
 ---
 
+## XML
+
+- XML (Extensible Markup Language) is a widely used format for structured data representation.
+- XML serialization and deserialization in Java can be handled using the `JAXB` library.
+
+---
+
+## Adding XML de/se-rializer dependency to your project
+
+- Search for `javax.xml.bind:jaxb-api` in Maven Central Repository.
+- Add the JAXB library to the `build.gradle.kts` file.
+  ```kotlin
+  dependencies {
+      implementation("javax.xml.bind:jaxb-api:2.3.1")
+      implementation("org.glassfish.jaxb:jaxb-runtime:2.3.1")
+  }
+  ```
+- Sync the Gradle project to download the required dependencies.
+
+---
+
+## Serialization from Object to XML
+
+- Annotate the class with `@XmlRootElement` and its fields with `@XmlElement`.
+- Use the `Marshaller` class to convert the object to an XML string.
+
+  ```java
+  import javax.xml.bind.annotation.XmlElement;
+  import javax.xml.bind.annotation.XmlRootElement;
+  
+  @XmlRootElement
+  class Car {
+      @XmlElement
+      String color;
+      
+      @XmlElement
+      String make;
+      
+      public Car() {}
+      
+      public Car(String color, String make) {
+          this.color = color;
+          this.make = make;
+      }
+  }
+  ```
+  
+  ```java
+  import javax.xml.bind.JAXBContext;
+  import javax.xml.bind.JAXBException;
+  import javax.xml.bind.Marshaller;
+  
+  public class Main {
+      public static void main(String[] args) throws JAXBException {
+          Car car = new Car("Red", "Tesla");
+          JAXBContext context = JAXBContext.newInstance(Car.class);
+          Marshaller marshaller = context.createMarshaller();
+          marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+          marshaller.marshal(car, System.out);
+      }
+  }
+  ```
+
+---
+
+## Deserialization from XML to Object
+
+- Use the `Unmarshaller` class to parse XML into an object.
+  
+  ```java
+  import javax.xml.bind.JAXBContext;
+  import javax.xml.bind.JAXBException;
+  import javax.xml.bind.Unmarshaller;
+  import java.io.StringReader;
+  
+  public class Main {
+      public static void main(String[] args) throws JAXBException {
+          String xmlData = """
+          <car>
+              <color>Blue</color>
+              <make>Tesla</make>
+          </car>
+          """;
+          JAXBContext context = JAXBContext.newInstance(Car.class);
+          Unmarshaller unmarshaller = context.createUnmarshaller();
+          Car car = (Car) unmarshaller.unmarshal(new StringReader(xmlData));
+          System.out.printf("Car: (%s, %s)\n", car.color, car.make);
+      }
+  }
+  ```
+
+---
+
+## Complete example
+
+[Example Code](../../deserial/src/main/java/org/example/xml/XmlUse.java)
+
+---
+
+## CSV
+
+- CSV (Comma-Separated Values) is a simple format for tabular data.
+- CSV serialization and deserialization in Java can be handled using the `opencsv` library.
+
+---
+
+## Adding CSV de/se-rializer dependency to your project
+
+- Search for `com.opencsv:opencsv` in Maven Central Repository.
+- Add the OpenCSV library to the `build.gradle.kts` file.
+  ```kotlin
+  dependencies {
+      implementation("com.opencsv:opencsv:5.7.1")
+  }
+  ```
+- Sync the Gradle project to download the required dependencies.
+
+---
+
+## Serialization from Object to CSV
+
+- Annotate the class with `@CsvBindByName`.
+- Use `CsvToBeanBuilder` to convert a list of objects to CSV.
+  
+  ```java
+  import com.opencsv.bean.CsvBindByName;
+  
+  public class Car {
+      @CsvBindByName
+      private String color;
+      
+      @CsvBindByName
+      private String make;
+      
+      public Car() {}
+      
+      public Car(String color, String make) {
+          this.color = color;
+          this.make = make;
+      }
+  }
+  ```
+  
+  ```java
+  import com.opencsv.CSVWriter;
+  import java.io.FileWriter;
+  import java.io.IOException;
+  
+  public class Main {
+      public static void main(String[] args) throws IOException {
+          String[] header = {"color", "make"};
+          String[] carData = {"Red", "Tesla"};
+          
+          try (CSVWriter writer = new CSVWriter(new FileWriter("cars.csv"))) {
+              writer.writeNext(header);
+              writer.writeNext(carData);
+          }
+      }
+  }
+  ```
+
+---
+
+## Deserialization from CSV to Object
+
+- Use `CsvToBeanBuilder` to parse CSV into a list of objects.
+  
+  ```java
+  import com.opencsv.bean.CsvToBean;
+  import com.opencsv.bean.CsvToBeanBuilder;
+  import java.io.FileReader;
+  import java.io.Reader;
+  import java.util.List;
+  
+  public class Main {
+      public static void main(String[] args) throws Exception {
+          Reader reader = new FileReader("cars.csv");
+          CsvToBean<Car> csvToBean = new CsvToBeanBuilder<Car>(reader)
+                  .withType(Car.class)
+                  .withIgnoreLeadingWhiteSpace(true)
+                  .build();
+          
+          List<Car> cars = csvToBean.parse();
+          for (Car car : cars) {
+              System.out.printf("Car: (%s, %s)\n", car.getColor(), car.getMake());
+          }
+      }
+  }
+  ```
+
+---
+
+## Complete example
+
+[Example Code](../../deserial/src/main/java/org/example/csv/CsvUse.java)
+
+---
+
+## What is Java Bean
+
+### **What is a Bean in Java?**  
+
+A **Java Bean** is a standard Java class that follows specific conventions, primarily used for encapsulating data. Beans are widely used in frameworks and libraries like Spring, Java EE, and tools like OpenCSV for object mapping.
+
+---
+
+### **Key Characteristics of a Java Bean**
+1. **Private Fields**  
+   - The class fields (variables) should be **private** to enforce encapsulation.
+   
+2. **Public Getters and Setters**  
+   - The class should provide **public getter and setter methods** to allow controlled access to private fields.
+
+3. **A No-Argument Constructor**  
+   - A **public no-arg constructor** is required so that frameworks and tools can create instances automatically.
+
+4. **Serializable (Optional but Recommended)**  
+   - Java Beans often implement `Serializable` to support easy persistence and data transfer.
+
+---
+
+### **Example of a Java Bean**
+```java
+import java.io.Serializable;
+
+public class Car implements Serializable {
+    private String color;
+    private String make;
+
+    // No-argument constructor
+    public Car() {}
+
+    // Constructor with parameters
+    public Car(String color, String make) {
+        this.color = color;
+        this.make = make;
+    }
+
+    // Getter and Setter for color
+    public String getColor() {
+        return color;
+    }
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    // Getter and Setter for make
+    public String getMake() {
+        return make;
+    }
+    public void setMake(String make) {
+        this.make = make;
+    }
+}
+```
+
+---
+
+### **Why Use Beans?**
+- **Encapsulation**: Keeps data secure and accessible only through defined methods.
+- **Framework Compatibility**: Many frameworks (e.g., Spring, Hibernate, OpenCSV) rely on bean conventions for automatic object creation.
+- **Serialization Support**: Can be easily converted into different formats like JSON, XML, or stored in a database.
