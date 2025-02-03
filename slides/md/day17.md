@@ -190,7 +190,14 @@ You want to convert your JSON data to class object which can be processed by Jav
         }
     }
     ```
-- If some field `xyz` is present in the JSON but not in the class, an exception will be thrown. To avoid this, you can use the `@JsonIgnoreProperties(ignoreUnknown = true)` annotation on the class.
+- If some field `xyz` is present in the JSON but not in the class, an exception will be thrown. To avoid this, you can do either:
+    + Add the `@JsonIgnoreProperties(ignoreUnknown = true)` annotation on the class.
+    + Configure object mapper instance to ignore unknown properties.
+      ```java
+      import com.fasterxml.jackson.databind.DeserializationFeature;
+      // ...
+      om.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+      ```
 
 ---
 

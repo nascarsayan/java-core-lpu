@@ -2,9 +2,10 @@ package org.example;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-// This is required to ignore someFieldNotPresentInClass key inside the json in deserialization.
+// This is required to ignore someFieldNotPresentInClass key inside the JSON in deserialization.
 @JsonIgnoreProperties(ignoreUnknown = true)
 class Car {
     String Color;
@@ -39,6 +40,8 @@ public class Main {
 
         // Serialization.
         var om = new ObjectMapper();
+        // You can configure the object mapper to ignore global fields too, instead of annotating each class.
+//        om.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         Car car = new Car("Red", "Tesla");
         try {
             String carJson = om.writeValueAsString(car);
