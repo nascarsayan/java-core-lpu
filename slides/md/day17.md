@@ -90,7 +90,13 @@ layout: default
 
 You want to convert your JSON data to class object which can be processed by Java.
 - Create a class with the required fields.
-- **Add getter and setter methods** for each of the fields that you want to serialize.
+- **Add getter** for each of the fields that you want to serialize.
+- How it works:
+  + The serialization library will search for all the methods that start with `get` or `is` (for bolean attributes).
+  + Each of these methods will be called, and the return value will be set as the value of the corresponding field in the JSON.
+  + If you don't want to serialize a field, don't add a getter for that field.
+  + You can add cutom getXyz methods (does not correspond to actual xyz attribute in the object), and the serialized JSON will contain a field with the name `xyz`, and the data will be the return value of the method.
+
     ```java
     class Car {
         String color;
@@ -107,14 +113,6 @@ You want to convert your JSON data to class object which can be processed by Jav
 
         public String getMake() {
             return make;
-        }
-
-        public void setColor(String color) {
-            this.color = color;
-        }
-
-        public void setMake(String make) {
-            this.make = make;
         }
     }
     ```
@@ -137,3 +135,65 @@ You want to convert your JSON data to class object which can be processed by Jav
     }
     ```
 
+---
+
+## Deserialization from JSON to Object
+
+- You want to convert JSON data to a class object which can be processed by Java.
+- Create a class with the required fields.
+- Add the default constructor.
+- **Add setter** for each of the fields that you want to deserialize.
+- How it works:
+  + The deserialization library will first call the default constructor of the class, to create an object. This default constructor should be visible to the call site (You cna make default constructor `public`).
+  + The deserialization library will search for all the methods that start with `set`.
+  + Each of these methods will be called, and the value of the corresponding field in the JSON will be set as the return value of the method.
+  + If you don't want to deserialize a field, don't add a setter for that field.
+  + You can add cutom setXyz methods (does not correspond to actual xyz attribute in the object), and the deserialized JSON will contain a field with the name `xyz`, and the data will be the return value of the method.
+
+    ```java
+    class Car {
+        String color;
+        String make;
+
+        public Car() {}
+
+        public void setColor(String color) {
+            this.color = color;
+        }
+
+        public void setMake(String make) {
+            this.make = make;
+        }
+    }
+    ```
+- Use the `ObjectMapper` class from the Jackson library to deserialize the JSON to object.
+    ```java
+    import com.fasterxml.jackson.core.JsonProcessingException;
+    import com.fasterxml.jackson.databind.ObjectMapper;
+
+    public class Main {
+        public static void main(String[] args) throws JsonProcessingException {
+            var om = new ObjectMapper();
+            String jsonData = """
+    {
+        "make":"Tesla",
+        "color":"Blue",
+        "someFieldNotPresentInClass": "foobar"
+    }
+    """;
+            try {
+                var car2 = om.readValue(carJson, Car.class);
+                System.out.printf("Car2 : (%s, %s)\n", car2.make, car2.Color);
+            } catch (Exception e) {
+                throw e;
+            }
+        }
+    }
+    ```
+- If some field `xyz` is present in the JSON but not in the class, an exception will be thrown. To avoid this, you can use the `@JsonIgnoreProperties(ignoreUnknown = true)` annotation on the class.
+
+---
+
+## Complete example
+
+[Serialization and Deserialization example](../../deserial/src/main/java/org/example/Main.java)
