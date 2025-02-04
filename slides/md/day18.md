@@ -106,3 +106,74 @@ class RangeFreqQuery {
 
 ---
 
+## Union Find
+
+![Explanation](../images/unionFind.svg)
+
+---
+
+### Union-Find (Disjoint Set Union - DSU) in Java
+
+The **Union-Find** data structure, also known as the **Disjoint Set Union (DSU)**, is a powerful tool used to manage collections of disjoint sets efficiently. It supports two primary operations:
+
+1. **Find**: Determine which set a particular element belongs to.
+2. **Union**: Merge two sets into one.
+
+#### Key Features:
+- **Path Compression**: Optimizes the `find` operation by flattening the structure of the tree, making future queries faster.
+- **Union by Rank/Size**: Ensures that smaller trees are attached to larger ones, keeping the tree balanced and improving efficiency.
+
+#### Implementation in Java:
+Here’s a basic implementation of the Union-Find data structure in Java:
+
+```java
+class UnionFind {
+    private int[] parent;
+    private int[] rank;
+
+    // Constructor to initialize the Union-Find structure
+    public UnionFind(int size) {
+        parent = new int[size];
+        rank = new int[size];
+        for (int i = 0; i < size; i++) {
+            parent[i] = i; // Each element is its own parent initially
+            rank[i] = 1;   // Initially, each set has a rank of 1
+        }
+    }
+
+    // Find the root of the set containing element x with path compression
+    public int find(int x) {
+        if (parent[x] != x) {
+            parent[x] = find(parent[x]); // Path compression
+        }
+        return parent[x];
+    }
+
+    // Union two sets containing elements x and y using union by rank
+    public boolean union(int x, int y) {
+        int rootX = find(x);
+        int rootY = find(y);
+
+        if (rootX == rootY) {
+            return false; // Already in the same set
+        }
+
+        // Union by rank
+        if (rank[rootX] > rank[rootY]) {
+            parent[rootY] = rootX;
+        } else if (rank[rootX] < rank[rootY]) {
+            parent[rootX] = rootY;
+        } else {
+            parent[rootY] = rootX;
+            rank[rootX]++;
+        }
+
+        return true;
+    }
+
+    // Check if two elements are connected (i.e., in the same set)
+    public boolean isConnected(int x, int y) {
+        return find(x) == find(y);
+    }
+}
+```
