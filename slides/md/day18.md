@@ -61,3 +61,47 @@ Given an array `arr`, what is the sum of elements in the range `[l, r]`?
 
 [Source Code](../../code/src/collections/SegmentTree.java)
 
+---
+
+## Range Frequency Queries (using Prefix-Sum like approach)
+
+- We could solve this problem using prefix-sum like approach.
+  + However, the size complexity of the problem becomes `O(N*2)` if all elements are distinct - and can cause memory limit exceeded.
+
+Code will look like this:
+
+```java
+// Will lead to memory limit exceeded.
+class RangeFreqQuery {
+    HashMap<Integer, Integer>[] freqTillIdx;
+    public RangeFreqQuery(int[] arr) {
+        freqTillIdx = new HashMap[arr.length+1];
+        for (int i = 0; i <= arr.length; i++) {
+            freqTillIdx[i] = new HashMap<>();
+        }
+        for (int i = 1; i <= arr.length; i++) {
+            freqTillIdx[i].putAll(freqTillIdx[i-1]);
+            freqTillIdx[i].merge(arr[i-1], 1, Integer::sum);
+        }
+    }
+
+    public int query(int left, int right, int value) {
+        var l = freqTillIdx[left];
+        var r = freqTillIdx[right+1];
+        return r.getOrDefault(value, 0) - l.getOrDefault(value, 0);
+    }
+}
+```
+
+---
+
+## Range Frequency Queries (using Segment Tree)
+
+- To reduce the size complexity, we can use Segment Tree. The memory complexity will be `O(N*log(N))`. [Reference](../llm-outputs/MemoryComplexityRangeFreq.md)
+
+![segment Tree Frequency](../images/segTreeFreq.svg)
+
+[Source Code](../../code/src/leetcode/RangeFrequencyQueries.java)
+
+---
+
