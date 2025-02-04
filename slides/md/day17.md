@@ -40,7 +40,7 @@ layout: default
 - In IntelliJ IDEA, create a new project.
 - Select Maven / Gradle / Groovy (whichever you prefer).
   + For this example, we will use Gradle with Kotlin DSL.
-  ![New Project](maven_kotlin_new.png)
+  ![New Project](../images/maven_kotlin_new.png)
 - Select the JDK version. If JDK not installed, Jetbrains will provide the option to download it.
 - Select the project name and location.
 - Wait for the project to get loaded (might take some time).
@@ -74,7 +74,7 @@ layout: default
 ## Adding JSON de/se-rializer dependency to your project
 
 - Search for `jackson-databind` in Maven Central Repository (a registry containing links to Java 3rd party libraries). Open the link corresponding to `com.fasterxml.jackson.core:jackson-databind`. Select the appropriate build tool, as per your project. Copy the code snippet to add the dependency to your project.
-  ![get dependency ID](get_dependency_id.png)
+  ![get dependency ID](../images/get_dependency_id.png)
 - Add the Jackson databind library to the `build.gradle.kts` file.
   ```kotlin
   dependencies {
@@ -82,7 +82,7 @@ layout: default
   }
   ```
 - Sync the Gradle project (to recompute and download the required dependencies). The same thing needs to be done in Maven project too.
-  ![sync maven changes](sync_changes.png)
+  ![sync maven changes](../images/sync_changes.png)
 
 ---
 
