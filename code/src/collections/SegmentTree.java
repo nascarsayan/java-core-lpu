@@ -72,10 +72,13 @@ public class SegmentTree {
 
         int mid = node.start + (node.end - node.start) / 2;
 
+        // The index falls within either [start, mid] or [mid+1, end].
         if (index <= mid) {
+            // the index of the affected node falls within [start, mid]
             // Update in the left subtree
             pointUpdateTree(node.left, index, newValue);
         } else {
+            // the index of the affected node falls within [mid+1, end]
             // Update in the right subtree
             pointUpdateTree(node.right, index, newValue);
         }
