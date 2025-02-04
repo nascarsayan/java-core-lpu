@@ -177,3 +177,10 @@ class UnionFind {
     }
 }
 ```
+
+---
+
+## [Number of Provinces](https://leetcode.com/problems/number-of-provinces/)
+
+[source code](../../code/src/leetcode/NumberOfProvinces.java)
+
