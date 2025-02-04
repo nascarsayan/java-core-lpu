@@ -40,7 +40,7 @@ public class Main {
 
         // Serialization.
         var om = new ObjectMapper();
-        // You can configure the object mapper to ignore global fields too, instead of annotating each class.
+        // You can configure the object mapper instance to ignore fields too, instead of decorating each class.
 //        om.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         Car car = new Car("Red", "Tesla");
         try {
