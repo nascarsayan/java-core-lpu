@@ -32,6 +32,7 @@ layout: default
 - Problems on Segment Tree
   + https://leetcode.com/problems/range-sum-query-mutable/description/
   + https://leetcode.com/problems/range-frequency-queries/description/
+- Union-Find or Disjoint Set Union
 
 ---
 
