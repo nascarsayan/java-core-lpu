@@ -45,6 +45,7 @@ public class SegmentTree {
 
         // Internal node: stores the sum of its children
         node.value = node.left.value;
+        // The right node might not exist (can be null). Handle null.
         if (node.right != null) {
             node.value += node.right.value;
         }
