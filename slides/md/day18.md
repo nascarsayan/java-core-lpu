@@ -184,3 +184,17 @@ class UnionFind {
 
 [source code](../../code/src/leetcode/NumberOfProvinces.java)
 
+---
+
+## Range Sum Query 2D - Immutable
+
+https://www.lintcode.com/problem/665/
+
+[source code](../../code/src/leetcode/RangeSumQuery2DImmutable.java)
+
+---
+
+## Accounts Merge
+
+[source code](../../code/src/leetcode/AccountsMerge.java)
+
