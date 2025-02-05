@@ -46,3 +46,19 @@ layout: default
 
 ---
 
+# Ferris Wheel - CSES
+
+[explanation](../images/ferrisWheel.excalidraw)
+
+[source code](../../code/src/cses/FerrisWheel.java)
+
+---
+
+# AVGPERM - Codechef
+
+[explanation](../images/avgPerm.svg)
+
+[source code](../../code/src/codechef/AVGPERM.java)
+
+---
+
