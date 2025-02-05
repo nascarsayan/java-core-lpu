@@ -39,5 +39,10 @@ layout: default
 
 ---
 
-# https://www.codechef.com/practice/course/2-star-difficulty-problems/DIFF1500/problems/AVGPERM
+# Problems
+
+- https://www.codechef.com/practice/course/2-star-difficulty-problems/DIFF1500/problems/AVGPERM
+- https://cses.fi/problemset/task/1090
+
+---
 
