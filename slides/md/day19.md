@@ -48,7 +48,7 @@ layout: default
 
 # Ferris Wheel - CSES
 
-[explanation](../images/ferrisWheel.excalidraw)
+![explanation](../images/ferrisWheel.excalidraw)
 
 [source code](../../code/src/cses/FerrisWheel.java)
 
@@ -56,9 +56,34 @@ layout: default
 
 # AVGPERM - Codechef
 
-[explanation](../images/avgPerm.svg)
+![explanation](../images/avgPerm.svg)
 
 [source code](../../code/src/codechef/AVGPERM.java)
 
 ---
 
+# Restaurant Customers - CSES
+
+![explanation](../images/maxOverlappingIntervals.svg)
+
+[source code](../../code/src/cses/RestaurantCustomers.java)
+
+---
+
+# Movie Festival - CSES
+
+![explanation](../images/maxNonOverlap.svg)
+
+[source code](../../code/src/cses/MovieFestival.java)
+
+---
+
+# Merge Intervals
+
+![explanation](../images/mergeIntervals.svg)
+
+---
+
+# Homework
+
+https://cses.fi/problemset/task/2183
