@@ -38,3 +38,6 @@ layout: default
 ![explanation](../images/sumQuery2D.svg)
 
 ---
+
+# https://www.codechef.com/practice/course/2-star-difficulty-problems/DIFF1500/problems/AVGPERM
+
