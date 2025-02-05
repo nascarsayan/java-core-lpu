@@ -12,7 +12,9 @@ public class RangeSumQuery2DImmutable {
             pre = new int[nr+1][nc+1];
             for (int ir = 1; ir <= nr; ir++) {
                 for (int ic = 1; ic <= nc; ic++) {
-                    pre[ir][ic] = pre[ir][ic-1] + pre[ir-1][ic] - pre[ir-1][ic-1] + matrix[ir-1][ic-1];
+                    pre[ir][ic] = (pre[ir][ic-1] +
+                            pre[ir-1][ic] - pre[ir-1][ic-1] +
+                            matrix[ir-1][ic-1]);
                 }
             }
         }

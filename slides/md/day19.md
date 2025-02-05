@@ -28,6 +28,13 @@ layout: default
 
 ## Agenda
 
+- Working with Ranges / Intervals
 - Explain missed concepts and practice from https://www.hellointerview.com/
+
+---
+
+# Range Sum Query 2D - Immutable
+
+![explanation](../images/sumQuery2D.svg)
 
 ---
