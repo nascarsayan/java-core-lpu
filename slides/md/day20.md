@@ -36,4 +36,6 @@ layout: default
 
 ![project overview](../images/projectOverview.svg)
 
+[Sample Project Readme](../../projects/TaskManager/)
+
 ---
