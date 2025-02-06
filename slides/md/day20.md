@@ -65,3 +65,9 @@ npx serve .
 ```
 
 ---
+
+## Project Assignment
+
+Will generate some code for a bunch of projects, and you will be needed to complete them. [Cursor](https://www.cursor.com/) will be helpful to complete the code.
+
+---

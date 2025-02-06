@@ -26,3 +26,5 @@ Hackernews (Some of these items are relevant):
 - Search topics: https://hn.algolia.com/
 
 DSA with visualizations: https://www.hellointerview.com/
+
+Learn Design Patterns and OOPs conceps: https://refactoring.guru/design-patterns/what-is-pattern
