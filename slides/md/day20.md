@@ -39,3 +39,12 @@ layout: default
 [Sample Project Readme](../../projects/TaskManager/)
 
 ---
+
+## Learning JS (and Web basics)
+
+https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/A_first_splash
+
+https://web.dev/learn/javascript
+
+---
+
