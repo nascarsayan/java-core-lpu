@@ -48,3 +48,20 @@ https://web.dev/learn/javascript
 
 ---
 
+## Understand the codebase
+
+To run the Java code, go to the [root of the Java application](../../projects/TaskManager/) and open IntelliJ Idea at that location. Once project loads up, run the `TaskManagerApplication` class.
+
+If you just want to run the frontend code using any server, go to [the static directory](../../projects/TaskManager/src/main/resources/static/) and run the server.
+
+```bash
+python -m http.server
+```
+
+OR
+
+```bash
+npx serve .
+```
+
+---
