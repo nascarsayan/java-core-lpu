@@ -1,4 +1,10 @@
-input to bolt.new
+input to [bolt.new](https://bolt.new/) is below:
+
+---
+
+Please create boilerplate for:
+
+*Insert project SRS here. Sample SRS is below*
 
 ---
 
@@ -51,69 +57,133 @@ Sample preact code with import maps
 </html>
 ```
 
-<!-- <The app specification goes here> -->
+relationships between classes:
 
----- ### 1. **Task Manager App**
-Entities: User, Task
-Relationships: A User has many Tasks
-Functionality: Users create, edit, and delete tasks with a due date and status.
-
-
------------
-
-Here are **10 project ideas** where the backend is stubbed out, and the frontend is built using **React + Bolt.new**, with Java as the backend:  
+```mermaid
+graph TD
+    A[Frontend App] --> B[StorageInterface]
+    B --> C[IndexedDBStorage]
+    B --> D[RestApiClient]
+    D --> E[Spring Boot Backend]
+    E --> F[H2 Database]
+```
 
 ---
 
-### 1. **Task Manager App**  
-   - **Entities**: `User`, `Task`  
-   - **Relationships**: A `User` has many `Tasks`  
-   - **Functionality**: Users create, edit, and delete tasks with a due date and status.  
+Sample project file structure 
+.
+├── main
+│   ├── java
+│   │   └── org
+│   │       └── example
+│   │           └── taskmanager
+│   │               ├── TaskManagerApplication.java
+│   │               ├── controller
+│   │               │   ├── HelloController.java
+│   │               │   └── TaskController.java
+│   │               ├── model
+│   │               │   └── Task.java
+│   │               └── repository
+│   │                   ├── TaskJdbcRepository.java
+│   │                   └── TaskRepository.java
+│   └── resources
+│       ├── application.yaml
+│       ├── schema.sql
+│       └── static
+│           ├── README.md
+│           ├── index.html
+│           ├── js
+│           │   ├── app.js
+│           │   ├── components
+│           │   │   ├── TaskForm.js
+│           │   │   └── TaskList.js
+│           │   ├── context
+│           │   │   └── TaskContext.js
+│           │   └── services
+│           │       ├── IndexedDBStorage.js
+│           │       ├── RestApiClient.js
+│           │       ├── TaskStorageInterface.js
+│           │       └── taskService.js
+│           └── styles.css
 
-### 2. **Book Lending System**  
-   - **Entities**: `User`, `Book`  
-   - **Relationships**: A `User` can borrow multiple `Books`  
-   - **Functionality**: Users can borrow and return books with availability tracking.  
+---
+application.yaml
 
-### 3. **Event Ticketing System**  
-   - **Entities**: `User`, `Event`  
-   - **Relationships**: A `User` can purchase tickets for multiple `Events`  
-   - **Functionality**: Users browse events and buy tickets.  
+spring:
+  application:
+    name: TaskManager
+  datasource:
+    url: jdbc:h2:file:./h2
+    username: user
+    password: pass
+    driver-class-name: org.h2.Driver
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  sql:
+    init:
+      mode: always
 
-### 4. **Simple Inventory System**  
+------
+
+Sample projects are below:
+
+------
+
+Here are **10 project ideas** without a `User` entity, where the backend is stubbed out, and the frontend is built using **React + Bolt.new**, with Java as the backend:
+
+---
+
+### 1. **Task Assignment System**  
+   - **Entities**: `Task`, `Worker`  
+   - **Relationships**: A `Worker` is assigned multiple `Tasks`  
+   - **Functionality**: Assign, track, and complete tasks for different workers.  
+
+### 2. **Library Management System**  
+   - **Entities**: `Book`, `Author`  
+   - **Relationships**: An `Author` writes multiple `Books`  
+   - **Functionality**: Search, categorize, and manage books with author details.  
+
+### 3. **Event Scheduling System**  
+   - **Entities**: `Event`, `Venue`  
+   - **Relationships**: A `Venue` hosts multiple `Events`  
+   - **Functionality**: Schedule, reschedule, and track events at different venues.  
+
+### 4. **Product Inventory System**  
    - **Entities**: `Product`, `Category`  
-   - **Relationships**: A `Category` has many `Products`  
-   - **Functionality**: CRUD for products and categories. Products have stock levels.  
+   - **Relationships**: A `Category` contains multiple `Products`  
+   - **Functionality**: Manage stock levels, add/remove products, and filter by category.  
 
 ### 5. **Student Course Registration**  
    - **Entities**: `Student`, `Course`  
-   - **Relationships**: A `Student` can enroll in multiple `Courses`  
-   - **Functionality**: Students can register/drop courses. Courses have a capacity limit.  
+   - **Relationships**: A `Student` enrolls in multiple `Courses`  
+   - **Functionality**: Students register for courses, drop them, and view their schedule.  
 
 ### 6. **Movie Review System**  
-   - **Entities**: `User`, `Movie`, `Review`  
-   - **Relationships**: A `User` can leave multiple `Reviews` for `Movies`  
-   - **Functionality**: Users review movies with ratings and comments.  
+   - **Entities**: `Movie`, `Review`  
+   - **Relationships**: A `Movie` has multiple `Reviews`  
+   - **Functionality**: Add reviews, rate movies, and browse ratings.  
 
 ### 7. **Appointment Booking System**  
-   - **Entities**: `User`, `Appointment`  
-   - **Relationships**: A `User` can have multiple `Appointments`  
-   - **Functionality**: Users book and manage appointments with a date/time field.  
+   - **Entities**: `Appointment`, `TimeSlot`  
+   - **Relationships**: An `Appointment` is scheduled within a `TimeSlot`  
+   - **Functionality**: Book, reschedule, and cancel appointments.  
 
-### 8. **Online Polling System**  
+### 8. **Voting and Polling System**  
    - **Entities**: `Poll`, `Option`, `Vote`  
-   - **Relationships**: A `Poll` has multiple `Options`, and a `User` can cast one `Vote` per `Poll`  
-   - **Functionality**: Users create polls and vote on them.  
+   - **Relationships**: A `Poll` has multiple `Options`, and each `Option` can receive `Votes`  
+   - **Functionality**: Create polls, vote, and see results.  
 
-### 9. **Expense Tracker**  
-   - **Entities**: `User`, `Expense`, `Category`  
-   - **Relationships**: A `User` has multiple `Expenses`, and each `Expense` belongs to a `Category`  
-   - **Functionality**: Users track expenses, filter by category, and see total spending.  
+### 9. **Expense Tracking System**  
+   - **Entities**: `Expense`, `Category`  
+   - **Relationships**: An `Expense` belongs to a `Category`  
+   - **Functionality**: Log expenses, categorize them, and view spending reports.  
 
 ### 10. **E-commerce Cart System**  
-   - **Entities**: `User`, `Product`, `CartItem`  
-   - **Relationships**: A `User` can have multiple `CartItems`, and each `CartItem` belongs to a `Product`  
-   - **Functionality**: Users add/remove items from their cart, with quantity management.  
+   - **Entities**: `Product`, `CartItem`  
+   - **Relationships**: A `CartItem` is linked to a `Product`  
+   - **Functionality**: Add/remove items from the cart and manage quantities.  
 
 ---
 
@@ -122,4 +192,4 @@ Each project will have:
 ✅ **Stubbed Java backend** (REST API contract defined, implementation missing)  
 ✅ **IndexedDB/In-memory storage** for the initial working UI  
 
-Would you like me to generate code stubs for any specific project(s)?
+Would you like me to generate code stubs for any of these?
