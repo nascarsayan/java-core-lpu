@@ -11,7 +11,7 @@ mdc: true
 
 <div class="pt-12">
   <span @click="$slidev.nav.next" class="px-2 py-1 rounded cursor-pointer" flex="~ justify-center items-center gap-2" hover="bg-white bg-opacity-10">
-    Press Space for next page <div class="i-carbon:arrow-right inline-block"/>
+    Press Space for next page <div class="i-carbon:arrow-right inline-block"></div>
   </span>
 </div>
 

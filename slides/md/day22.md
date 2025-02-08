@@ -12,7 +12,7 @@ mdc: true
 
 <div class="pt-13">
   <span @click="$slidev.nav.next" class="px-2 py-1 rounded cursor-pointer" flex="~ justify-center items-center gap-2" hover="bg-white bg-opacity-10">
-    Press Space for next page <div class="i-carbon:arrow-right inline-block"/>
+    Press Space for next page <div class="i-carbon:arrow-right inline-block"></div>
   </span>
 </div>
 
@@ -61,6 +61,9 @@ https://www.youtube.com/watch?v=r3DfWNxXhZc
 ![explanation](../images/riverCrossing.svg)
 
 [source code](../../code/src/river_crossing/P01WolfSheepCabbage.java)
+
+> [!IMPORTANT]
+> Similarly try to solve the other puzzles from the video playlist - The only backtracking problems that you will need to solve to get good at recursion
 
 Code in python is smaller
 
@@ -161,10 +164,5 @@ if __name__ == "__main__":
     else:
         print("No solution found!")
 ```
-
----
-
-> [!IMPORTANT]
-> Similarly try to solve the other puzzles from the video playlist - The only backtracking problems that you will need to solve to get good at recursion
 
 ---
