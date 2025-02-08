@@ -63,7 +63,7 @@ https://www.youtube.com/watch?v=r3DfWNxXhZc
 [source code](../../code/src/river_crossing/P01WolfSheepCabbage.java)
 
 > [!IMPORTANT]
-> Similarly try to solve the other puzzles from the video playlist - The only backtracking problems that you will need to solve to get good at recursion
+> Similarly try to solve the other puzzles from the [video](https://www.youtube.com/watch?v=r3DfWNxXhZc) - The only backtracking problems that you will need to solve to get good at recursion
 
 Code in python is smaller
 
