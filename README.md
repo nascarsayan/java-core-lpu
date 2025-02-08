@@ -28,3 +28,7 @@ Hackernews (Some of these items are relevant):
 DSA with visualizations: https://www.hellointerview.com/
 
 Learn Design Patterns and OOPs conceps: https://refactoring.guru/design-patterns/what-is-pattern
+
+Network Topologies simulations using containers: https://containerlab.dev/
+
+Web developer solid assignments: https://github.com/Debdut/course-web-dev-1/
