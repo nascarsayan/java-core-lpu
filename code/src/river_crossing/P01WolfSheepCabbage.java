@@ -4,8 +4,13 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Objects;
 
+// P01 ->
+
 public class P01WolfSheepCabbage {
-    static class State implements Comparable<State> {
+    // State represents the items present in the Left-Hand Side of the river.
+    // The State on the Right-Hand Side can be calculated by
+    // checking which items are not present in the LHS.
+    private static class State {
         boolean manPresent;
         // Wolf, sheep, cabbage.
         boolean[] wsc;
@@ -20,18 +25,6 @@ public class P01WolfSheepCabbage {
         State(State o) {
             this.manPresent = o.manPresent;
             this.wsc = o.wsc.clone();
-        }
-
-        @Override
-        public int compareTo(State o) {
-            // -1 means this is less than the other.
-            // 0 means this is equal to the other.
-            // 1 means this is greater than the other.
-            if (manPresent != o.manPresent) return -1;
-            for (int i = 0; i < 3; i++) {
-                if (wsc[i] != o.wsc[i]) return -1;
-            }
-            return 0;
         }
 
         @Override
@@ -111,9 +104,9 @@ public class P01WolfSheepCabbage {
         }
     }
 
-    HashSet<State> visited = new HashSet<>();
+    private final HashSet<State> visited = new HashSet<>();
 
-    boolean recurse(State state, ArrayList<State> path) {
+    private boolean recurse(State state, ArrayList<State> path) {
         visited.add(state);
         if (state.isFinalState()) return true;
         var nextStates = state.next();

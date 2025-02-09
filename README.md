@@ -32,3 +32,17 @@ Learn Design Patterns and OOPs conceps: https://refactoring.guru/design-patterns
 Network Topologies simulations using containers: https://containerlab.dev/
 
 Web developer solid assignments: https://github.com/Debdut/course-web-dev-1/
+
+### Grim Section
+
+Abstraction will end the civilization: https://www.youtube.com/watch?v=ZSRHeXYDLko
+
+Counter: https://datagubbe.se/endofciv/
+
+Cloud is overpriced:
++ DHH:
+  - https://world.hey.com/dhh/we-have-left-the-cloud-251760fb
+  - https://world.hey.com/dhh/we-stand-to-save-7m-over-five-years-from-our-cloud-exit-53996caa
+  - https://world.hey.com/dhh/our-cloud-exit-savings-will-now-top-ten-million-over-five-years-c7d9b5bd
+  - https://world.hey.com/dhh/we-stand-to-save-7m-over-five-years-from-our-cloud-exit-53996caa
+  - https://world.hey.com/dhh/servers-can-last-a-long-time-165c955c

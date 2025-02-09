@@ -71,6 +71,8 @@ graph TD
 ---
 
 Sample project file structure 
+
+```
 .
 ├── main
 │   ├── java
@@ -105,8 +107,10 @@ Sample project file structure
 │           │       ├── TaskStorageInterface.js
 │           │       └── taskService.js
 │           └── styles.css
+```
 
 ---
+```yaml
 application.yaml
 
 spring:
@@ -124,7 +128,7 @@ spring:
   sql:
     init:
       mode: always
-
+```
 ------
 
 Sample projects are below:
