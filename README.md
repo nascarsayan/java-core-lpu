@@ -33,6 +33,19 @@ Network Topologies simulations using containers: https://containerlab.dev/
 
 Web developer solid assignments: https://github.com/Debdut/course-web-dev-1/
 
+## Projects
+
+Submit and explain (will ask you details about the project code) any substantial software that you are working on. Need not be related to Java.
+
+[If you want to create some web application, find details here.](./slides/llm-outputs/Projects/README.md)
+
+> [!NOTE]
+> You can also show me some backtracking code to solve at least 3 games from River Crossing IQ. [Here is the video which shows the puzzles.](https://www.youtube.com/watch?v=r3DfWNxXhZc). You can install the game on mobile and verify that the steps work:
+> Android: https://play.google.com/store/apps/details?id=com.coscia.quasong.riveriq&hl=en_IN
+> IOS: https://apps.apple.com/us/app/river-crossing-iq-iq-test/id1194937461
+> Here's the explanation and source code for the first puzzle:
+> https://github.com/nascarsayan/java-core-lpu/blob/main/slides/md/day22.md#river-crossing-wolfsheepcabbage
+
 ### Grim Section
 
 Abstraction will end the civilization: https://www.youtube.com/watch?v=ZSRHeXYDLko

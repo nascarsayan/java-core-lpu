@@ -1,10 +1,18 @@
-input to [bolt.new](https://bolt.new/) is below:
+[You can find a sample TaskManager app, generated using bolt.new and cursor ai here.](../../../projects/TaskManager/). You need not use Java for backend.
+
+Generate some frontend code by prompting [bolt.new](https://bolt.new/). Once project is generated, you can open in ItelliJ Idea, and use Cursor AI to complete the code.
+
+This is a prompt which can be used at bolt.new.
 
 ---
 
 Please create boilerplate for:
 
-*Insert project SRS here. Sample SRS is below*
+*Insert project SRS here. You can find sample projects below, after the prompt ends.*
+
+---
+
+Prompt starts here
 
 ---
 
@@ -131,6 +139,10 @@ spring:
 ```
 ------
 
+Prompt starts here
+
+------
+
 Sample projects are below:
 
 ------
@@ -138,6 +150,8 @@ Sample projects are below:
 Here are **10 project ideas** without a `User` entity, where the backend is stubbed out, and the frontend is built using **React + Bolt.new**, with Java as the backend:
 
 ---
+
+## Projects
 
 ### 1. **Task Assignment System**  
    - **Entities**: `Task`, `Worker`  
