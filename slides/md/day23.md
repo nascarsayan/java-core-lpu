@@ -44,3 +44,45 @@ One can follow the guides, and write the C code to have the whole thing under ow
 
 ---
 
+## Network Layers
+
+A layered model more consistent with Unix might be:
+
+- Application Layer (telnet, ftp, etc.)
+- Host-to-Host Transport Layer (TCP, UDP)
+- Internet Layer (IP and routing)
+- Network Access Layer (Ethernet, wi-fi, or whatever)
+
+![Network Packets](../images/network_packets_osi.svg)
+
+---
+
+## Subnetting
+
+Dividing the pizza (or pie) into slices.
+
+[`sipcalc`](https://github.com/sii/sipcalc) can be used to calculate subnet information.
+
+```bash
+sipcalc 10.54.6.12/28
+```
+
+Output:
+
+```
+-[ipv4 : 10.54.6.12/28] - 0
+
+[CIDR]
+Host address            - 10.54.6.12
+Host address (decimal)  - 171312652
+Host address (hex)      - A36060C
+Network address         - 10.54.6.0
+Network mask            - 255.255.255.240
+Network mask (bits)     - 28
+Network mask (hex)      - FFFFFFF0
+Broadcast address       - 10.54.6.15
+Cisco wildcard          - 0.0.0.15
+Addresses in network    - 16
+Network range           - 10.54.6.0 - 10.54.6.15
+Usable range            - 10.54.6.1 - 10.54.6.14
+```
