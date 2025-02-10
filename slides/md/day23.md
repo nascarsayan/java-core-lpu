@@ -86,3 +86,16 @@ Addresses in network    - 16
 Network range           - 10.54.6.0 - 10.54.6.15
 Usable range            - 10.54.6.1 - 10.54.6.14
 ```
+
+---
+
+## Python primer
+
+- You don't need jupyter notebook for python. You can use use VSCode for the same.
+  + Use `#%%` to separate code blocks in python file (`.py`). You can run the code blocks using `Run Cell` option which shows up when you hover over the `#%%` block. You can also use `Ctrl + Enter` to run the code block.
+  + You can also open `ipynb` files in VSCode and run the code blocks.
+
+![source code](../../code/src/leetcode/pyForDSA.py)
+
+---
+
