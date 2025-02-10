@@ -28,7 +28,19 @@ layout: default
 
 ## Agenda
 
+- Beej Guides intro
 - [Network programming](https://beej.us/guide/bgnet/html/)
+
+---
+
+## About Beej Guides
+
+[Beej Guides](https://beej.us/guide/) are a good place to understand lower level concepts (by doing) like:
+- [Network programming](https://beej.us/guide/bgnet/html/)
+- [Inter-process communication (IPC)](https://beej.us/guide/bgipc/html/)
+- [Git](https://beej.us/guide/bggit/html/)
+
+One can follow the guides, and write the C code to have the whole thing under own control instead of just passively watching / reading.
 
 ---
 
