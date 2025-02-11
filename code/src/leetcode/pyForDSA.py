@@ -28,6 +28,8 @@ for idx, element in enumerate(arr):
 # Tuples are immutable lists. They are faster than lists and can be used as keys in dictionaries. They can also be used to hash an ordered set of objects.
 
 t = (1, 2, 3)
+t2 = (1, 2, 3)
+print(hash(t) == hash(t2))
 print(t[0]) # 1
 t = t + (4, 5, 6) # new tuple created
 print(t) # (1, 2, 3, 4, 5, 6)
@@ -81,6 +83,10 @@ print(d1)  # { "foo": 2, "bar": 3, "hello": "world" }
 from collections import defaultdict
 
 d2 = defaultdict(list) # default value is empty list
+# No need to write:
+# if "foo" not in d2:
+#     d2["foo"] = []
+
 d2["foo"].append(1)
 print(d2) # { "foo": [1] }
 
@@ -260,7 +266,7 @@ print(filtered) # [2, 4]
 # reduce is a really useful function for performing some computation on a list and returning the result.
 # It applies a rolling computation to sequential pairs of values in a list.
 from functools import reduce
-product_of_all_values = reduce((lambda x, y: x * y), items)
+product_of_all_values = reduce((lambda acc, next: acc * next), items)
 print(product_of_all_values)  # 1*2*3*4*5 = 120
 
 # %%
@@ -269,7 +275,10 @@ print(product_of_all_values)  # 1*2*3*4*5 = 120
 # permutations are all possible orderings of a list of items.
 # combinations are all possible combinations of a list of items.
 
-from itertools import permutations, combinations
+from itertools import permutations, combinations, product
+
+import itertools
+a = [12,2,3]
 
 items = [1, 2, 3]
 # all possible orderings of 1, 2, 3
@@ -279,6 +288,11 @@ print(perm) # [(1, 2, 3), (1, 3, 2), (2, 1, 3), (2, 3, 1), (3, 1, 2), (3, 2, 1)]
 # all possible combinations of 2 items from 1, 2, 3
 comb = list(combinations(items, 2))
 print(comb) # [(1, 2), (1, 3), (2, 3)]
+
+from math import comb, perm
+
+print(perm(5, 3)) # 60
+print(comb(5, 3)) # 10
 
 # %%
 
@@ -340,7 +354,7 @@ def fib(n):
 
 print(fib(10))  # 55
 
-#%%
+# %%
 # Sample DP question - Coin Change
 # Given a set of coin denominations, find the minimum number of coins required to make a certain amount.
 
@@ -382,7 +396,37 @@ sd[2] = 3
 
 print(sd)  # SortedDict({1: 2, 2: 3, 3: 1})
 
-ss = SortedSet([3, 1, 2])
+ss = SortedSet([3, 1, 2, 10, 7, 8, 9])
 print(ss)  # SortedSet([1, 2, 3])
+print(ss[0]) # 1
+print(ss[-1]) # 10
+
+ss.remove(10)
+print(ss[-1]) # 9
+
+# Multiset (Ordered) can be implemented using SortedDict with key as element and value as count.
+class SortedMultiSet:
+    def __init__(self):
+        self.sd = SortedDict()
+
+    def add(self, val):
+        self.sd[val] = self.sd.get(val, 0) + 1
+
+    def remove(self, val):
+        if val in self.sd:
+            self.sd[val] -= 1
+            if self.sd[val] == 0:
+                del self.sd[val]
+
+    def __repr__(self):
+        return str(list(self.sd.items()))
+
+sms = SortedMultiSet()
+sms.add(1)
+sms.add(1)
+sms.add(1)
+sms.add(2)
+sms.remove(1)
+print(sms)  # [1, 1, 2]
 
 # %%
