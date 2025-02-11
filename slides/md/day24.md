@@ -171,3 +171,11 @@ stateDiagram-v2
 
 ---
 
+## [River Crossing Backtracking - Popeye](https://www.youtube.com/watch?v=r3DfWNxXhZc&t=158s)
+
+Help a family of 5 people move across the river by boat, and the boat is capable of a **maximum of 2 people** carrying capacity. Time for travelling of each person in turn is **1 second, 3 seconds, 6 seconds, 8 seconds, and 12 seconds**. If two people both go on the boat, the boat will travel at **the speed of the slower person**. In **30 Seconds** please bring the whole family across the river.
+
+---
+
+[source code](../../code/src/river_crossing/P04Popeye.java)
+
