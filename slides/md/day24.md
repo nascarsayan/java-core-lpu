@@ -47,3 +47,127 @@ To find the match, we perform Z-algorithm on `<pattern>#<text>` and check if any
 If we find a match, we chunk out that part and continue the iteration.
 
 ---
+
+## Regular Expressions
+
+### What is a Regular Expression?
+- A sequence of characters defining a search pattern.
+- Used for pattern matching in text.
+- Common in search engines, data validation, and text processing.
+
+### Usage
+- Powerful tool for text parsing and manipulation.
+- Used in programming languages, command-line tools, and databases.
+
+## Syntax
+
+### Character Classes
+- `[a-z]` → Matches any lowercase letter.
+- `\d` → Matches any digit (0-9).
+- `\w` → Matches any word character (alphanumeric + underscore).
+
+### Quantifiers
+- `*` → 0 or more repetitions (e.g., `a*` matches ``, `a`, `aa`, ...)
+- `+` → 1 or more repetitions (e.g., `a+` matches `a`, `aa`, ... but not ``)
+- `?` → 0 or 1 repetition (e.g., `colou?r` matches `color` and `colour`)
+- `{n,m}` → Between `n` and `m` repetitions (e.g., `a{2,4}` matches `aa`, `aaa`, `aaaa`)
+
+### Anchors
+- `^` → Matches the start of a string.
+- `$` → Matches the end of a string.
+
+### Groups and Alternation
+- `()` → Capturing group (e.g., `(ab)+` matches `ab`, `abab`, `ababab`)
+- `|` → Alternation (e.g., `cat|dog` matches `cat` or `dog`)
+
+### Lookaheads and Lookbehinds
+- **Positive Lookahead**: `foo(?=bar)` matches `foo` only if followed by `bar`.
+- **Negative Lookahead**: `foo(?!bar)` matches `foo` only if not followed by `bar`.
+
+### Backreferences
+- `(\w)\1` matches repeated characters, e.g., `aa`, `bb`.
+
+### Greedy vs. Non-Greedy Matching
+- Greedy: `.*` matches the longest possible string.
+- Non-Greedy: `.*?` matches the shortest possible string.
+
+## Performance Considerations in Regular Expressions
+
+### When is Regex Fast?
+- Simple patterns that can be efficiently processed.
+- Anchored patterns (e.g., `^pattern` for beginning of string).
+
+### When is Regex Slow?
+- Patterns with excessive backtracking (e.g., `.*a` in a long text).
+- Nested quantifiers (e.g., `(a+)+` can cause exponential slowdowns).
+
+---
+
+## Exercise
+
+- [Regex Crossword](https://regexcrossword.com/)
+
+---
+
+## Regex State Diagrams
+
+Regular Expressions can be visualized using state diagrams. Here are a few examples:
+
+```mermaid
+stateDiagram-v2
+    direction LR
+    state "Pattern: a*b" as title1
+    [*] --> S0
+    S0 --> S0: a
+    S0 --> S1: b
+    S1 --> [*]
+```
+
+```mermaid
+stateDiagram-v2
+    direction LR
+    state "Pattern: (a|b)*" as title2
+    [*] --> S0
+    S0 --> S0: a, b
+    S0 --> [*]
+```
+
+```mermaid
+stateDiagram-v2
+    direction LR
+    state "Pattern: ab+c" as title3
+    [*] --> S0
+    S0 --> S1: a
+    S1 --> S2: b
+    S2 --> S2: b
+    S2 --> S3: c
+    S3 --> [*]
+```
+
+```mermaid
+stateDiagram-v2
+    direction LR
+    state "Pattern: (ab|cd)*" as title4
+    [*] --> S0
+    S0 --> S1: a
+    S0 --> S3: c
+    S1 --> S2: b
+    S2 --> S0
+    S3 --> S4: d
+    S4 --> S0
+    S0 --> [*]
+```
+
+```mermaid
+stateDiagram-v2
+    direction LR
+    state "Pattern: a(b|c)*d" as title5
+    [*] --> S0
+    S0 --> S1: a
+    S1 --> S1: b, c
+    S1 --> S2: d
+    S2 --> [*]
+```
+
+---
+
