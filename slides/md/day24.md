@@ -46,6 +46,8 @@ If we find a match, we remove the substring and continue the iteration.
 To find the match, we perform Z-algorithm on `<pattern>#<text>` and check if any value is equal to `pattern.length`. The matched part should start after the `#`.
 If we find a match, we chunk out that part and continue the iteration.
 
+[source code](../../code/src/leetcode/daily/RemoveAllOccurenceOfSubstring.java)
+
 ---
 
 ## Regular Expressions

@@ -275,9 +275,8 @@ print(product_of_all_values)  # 1*2*3*4*5 = 120
 # permutations are all possible orderings of a list of items.
 # combinations are all possible combinations of a list of items.
 
-from itertools import permutations, combinations, product
+from itertools import permutations, combinations
 
-import itertools
 a = [12,2,3]
 
 items = [1, 2, 3]
@@ -379,6 +378,60 @@ class Solution:
 
 sol = Solution([1, 2, 5])
 print(sol.coinChange(11))  # 3
+# %%
+# Operators * and **
+
+# Operator * can be used to unpack a list or tuple.
+a = [1, 2, 3]
+b = (4, 5, 6)
+print([*a, *b])  # [1, 2, 3, 4, 5, 6]
+
+# Operator ** can be used to unpack a dictionary.
+d1 = {"a": 1, "b": 2}
+d2 = {"b": 3, "c": 4}
+print({**d1, **d2})  # {'a': 1, 'b': 3, 'c': 4}
+
+# Operators * and ** can also be used in function definitions to do the reverse, i.e., pack extra arguments into a list or dictionary.
+def foo(a, b, *args, **kwargs):
+    print(a, b)
+    print(args)
+    print(kwargs)
+
+# 1, 2 are passed as positional arguments.
+# 3, 4 are passed as variable positional arguments.
+# c=5, d=6 are passed as keyword arguments.
+foo(1, 2, 3, 4, c=5, d=6)
+
+# %%
+# zip function is used to iterate multiple lists in parallel.
+
+names = ["Alice", "Bob", "Charlie"]
+ages = [24, 25, 26]
+for x, y in zip(names, ages):
+    print(x, y)
+
+a = [1, 2, 3]
+b = [4, 5, 6]
+c = [7, 8, 9]
+arr2d = [a, b, c]
+
+# Transpose a 2D array
+transposed = list(zip(*arr2d))
+print(transposed)
+# How this works:
+# 1. First *arr2d unpacks the 2D array into 3 separate lists: the contents of a, b, c.
+# 2. zip(a, b, c) will then iterate over the lists in parallel.
+
+# %%
+
+# itertools is a pretty handy module in Python. It contains various functions to work with iterators.
+import itertools
+
+# itertools.product is similar to nested loops. It returns the cartesian product of the input iterables.
+print(list(itertools.product([1, 2], [3, 4], [5]))) # (1, 3, 5) (1, 4, 5) (2, 3, 5) (2, 4, 5)
+
+# Check more here: https://docs.python.org/3/library/itertools.html
+
 # %%
 # Python does not have TreeMap and TreeSet equivalent (ordered collections; height balanced trees implemented using Red-Black Trees).
 # There is a 3rd party library called sortedcontainers which provides SortedDict and SortedSet.

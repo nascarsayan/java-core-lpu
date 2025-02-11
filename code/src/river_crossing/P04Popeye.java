@@ -56,7 +56,7 @@ public class P04Popeye {
 
         @Override
         public int hashCode() {
-            return Arrays.hashCode(isPresent);
+            return Objects.hash(Arrays.hashCode(isPresent), boatPresent, remainingTime);
         }
 
         @Override
